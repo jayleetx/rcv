@@ -19,8 +19,7 @@
   \item{tally}{contains information about whether the ballot was cast
   in early voting, was filed provisionally, and other factors}
   \item{serial_number}{the serial number of the voting machine used}
-  }
-  @source Transformed from `sf_bos_ballot` and `sf_bos_lookup`}
+  }}
 \usage{
 sf_bos_clean
 }
