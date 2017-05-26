@@ -18,7 +18,7 @@
 #' elections in Districts 1, 3, 5, 7, 9, and 11. Separating it to
 #' be made more useful with `sf_bos_ballot` is done in other functions.
 #'
-#' @format A data frame with 644 rows and 1 variable.
+#' @format A data frame with 644 rows and 1 variable
 #' @ source \url{http://www.sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt}
 "sf_bos_lookup"
 
@@ -45,3 +45,21 @@
 #'   \item{serial_number}{the serial number of the voting machine used}
 #'   }
 "sf_bos_clean"
+
+#' Raw ballot image data from a Cambridge, MA RCV election
+#'
+#' The .rda version of a .csv from a 2005 Cambridge, MA City Council
+#' multiwinner RCV election. This data is included as an example of
+#' another ballot image format for use with read_ballot.
+#'
+#' @format A data frame with 17959 rows and 26 variables
+"cambridge_ballot"
+
+#' Raw lookup data from a Cambridge, MA RCV election
+#'
+#' The .rda version of a .csv from a 2005 Cambridge, MA City Council
+#' multiwinner RCV election. This data is included as an example of
+#' another master lookup format for use with read_lookup.
+#'
+#' @format A data frame with 46 rows and 2 variables
+"cambridge_lookup"

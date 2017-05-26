@@ -4,7 +4,7 @@
 \name{sf_bos_lookup}
 \alias{sf_bos_lookup}
 \title{Raw ballot lookup data from a San Francisco RCV election.}
-\format{A data frame with 644 rows and 1 variable.}
+\format{A data frame with 644 rows and 1 variable}
 \usage{
 sf_bos_lookup
 }
