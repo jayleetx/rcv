@@ -14,13 +14,13 @@
 label_ballot <- function(data) {
   if (nchar(data[1,1]) == 45) {
     data %>%
-      tidyr::separate(X1, into = c("contest_id",
+      tidyr::separate(X1, into = c("Contest",
                                    "pref_voter_id",
                                    "serial_number",
-                                   "tally_type_id",
-                                   "precinct_id",
+                                   "Tally Type",
+                                   "Precinct",
                                    "vote_rank",
-                                   "candidate_id",
+                                   "Candidate",
                                    "over_vote",
                                    "under_vote"),
                       sep = c(7,16,23,26,33,36,43,44))
@@ -64,3 +64,6 @@ label_lookup <- function(data) {
 }
 
 
+characterize <- function(ballot, lookup) {
+  ballot
+}
