@@ -4,7 +4,7 @@
 \alias{readable}
 \title{Alters ballot dataframe to have each row correspond to a single voter}
 \usage{
-readable(x)
+readable(clean)
 }
 \arguments{
 \item{x}{A tidy dataframe that comes from ballot_tidy()}
