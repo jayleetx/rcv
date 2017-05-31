@@ -4,8 +4,13 @@
 #' @return A dataframe that can be easily read and understood by humans
 #' @examples
 #' readable(sf_bos_clean)
-#' @export
-readable <- function(x) {
-  spread(x, key = vote_rank,
-              value = candidate)
+#' @importFrom dplyr %>%
+readable <- function(clean) {
+  clean %>%
+    dplyr::select(contest,
+                  pref_voter_id,
+                  precinct,
+                  vote_rank,
+                  candidate) %>%
+    tidyr::spread(key = vote_rank, value = candidate)
 }
