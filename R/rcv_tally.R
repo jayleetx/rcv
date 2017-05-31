@@ -41,9 +41,9 @@ rcv_tally <- function(image, rcvcontest) {
       filter(vote_rank == min(vote_rank)) %>%
       ungroup() %>%
       group_by(candidate) %>%
-      summarise(total = n())
+      summarise(total = n()) %>%
+      data.frame()
       # %>%
-      # data.frame() %>%
       # arrange()
 
       #results[, j] <- results[, j - 1] + round[, 2]
