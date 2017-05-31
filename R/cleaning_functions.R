@@ -1,5 +1,7 @@
 #1234567890123456789012345678901234567890123456789012345678901234567890123456789
 
+
+
 #' Separates single column ballot data frames.
 #'
 #' Takes a data frame of a single column (i.e. sf_bos_ballot) and splits it
