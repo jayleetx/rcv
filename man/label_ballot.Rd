@@ -4,10 +4,15 @@
 \alias{label_ballot}
 \title{Separates single column ballot data frames.}
 \usage{
-label_ballot(data)
+label_ballot(data, method)
 }
 \arguments{
 \item{data}{A data frame containing the ballot image data}
+
+\item{method}{A character string detailing the method. Current
+supported methods are "WinEDS" and "ChoicePlus" (forthcoming), based on
+common types of software used. Contact creators with suggestions for
+more methods.}
 }
 \value{
 A data frame with multiple columns
@@ -19,4 +24,3 @@ into usable named columns.
 \examples{
 label_ballot(data = sf_bos_ballot)
 }
-

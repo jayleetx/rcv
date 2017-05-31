@@ -4,10 +4,15 @@
 \alias{label_lookup}
 \title{Separates single column master lookup data frames.}
 \usage{
-label_lookup(data)
+label_lookup(data, method)
 }
 \arguments{
 \item{data}{A data frame containing the master lookup data}
+
+\item{method}{A character string detailing the method. Current
+supported methods are "WinEDS" and "ChoicePlus" (forthcoming), based on
+common types of software used. Contact creators with suggestions for
+more methods.}
 }
 \value{
 A data frame with multiple columns
@@ -19,4 +24,3 @@ into usable columns.
 \examples{
 label_lookup(data = sf_bos_lookup)
 }
-
