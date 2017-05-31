@@ -13,4 +13,4 @@ Imports:
     tidyverse,
     forcats,
     networkD3
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1

@@ -14,8 +14,6 @@ sf_bos_ballot
 \description{
 The .rda version of a raw .txt file, containing ballot data
 in numeric form for the 2016 San Francisco Board of Supervisors
-elections in Districts 1, 3, 5, 7, 9, and 11. Separating it to
-be made more useful is done in other functions.
+elections in Districts 1, 3, 5, 7, 9, and 11.
 }
 \keyword{datasets}
-

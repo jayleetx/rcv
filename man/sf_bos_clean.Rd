@@ -6,8 +6,12 @@
 \title{Cleaned ballot image data from a San Francisco RCV election}
 \format{A data frame with 643806 rows and 9 variables:
 \describe{
-  \item{pref_voter_id}{a unique key identifying an individual voter }
   \item{contest}{which election this candidate ranking applies to}
+  \item{pref_voter_id}{a unique key identifying an individual voter }
+  \item{serial_number}{the serial number of the voting machine used}
+  \item{tally}{contains information about whether the ballot was cast
+  in early voting, was filed provisionally, and other factors}
+  \item{precinct}{which city precinct the voter voted in}
   \item{vote_rank}{the rank given to the candidate by the voter; in
   the San Francisco case can take values of 1, 2, or 3}
   \item{candidate}{the chosen candidate for the specified vote rank}
@@ -15,10 +19,6 @@
   votes cast than the number of candidates to be elected}
   \item{under_vote}{a dummy variable, coded 1 if the ballot shows no
   valid selection made for a candidate}
-  \item{precinct}{which city precinct the voter voted in}
-  \item{tally}{contains information about whether the ballot was cast
-  in early voting, was filed provisionally, and other factors}
-  \item{serial_number}{the serial number of the voting machine used}
   }}
 \usage{
 sf_bos_clean
@@ -29,4 +29,3 @@ readable to see voters' information, including candidate
 rankings, precinct, and over-/under-vote codings.
 }
 \keyword{datasets}
-

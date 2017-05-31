@@ -16,8 +16,6 @@ The .rda version of a raw .txt file, containing numeric and
 character information to match the numeric data in the raw
 ballot image with the objects these numeric strings refer to.
 Data refers to the 2016 San Francisco Board of Supervisors
-elections in Districts 1, 3, 5, 7, 9, and 11. Separating it to
-be made more useful with `sf_bos_ballot` is done in other functions.
+elections in Districts 1, 3, 5, 7, 9, and 11.
 }
 \keyword{datasets}
-
