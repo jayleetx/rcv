@@ -2,22 +2,20 @@
 % Please edit documentation in R/cleaning_functions.R
 \name{label_lookup}
 \alias{label_lookup}
-\title{Separates single column ballot data frames.}
+\title{Separates single column master lookup data frames.}
 \usage{
 label_lookup(data)
 }
 \arguments{
-\item{data}{A data frame containing the ballot image data}
-
-\item{format}{Which RCV format the ballot image is in}
+\item{data}{A data frame containing the master lookup data}
 }
 \value{
 A data frame with multiple columns
 }
 \description{
-Takes a data frame of a single column (i.e.
-sf_bos_ballot) and splits it into usable columns.
+Takes a data frame of a single column (i.e. sf_bos_lookup) and splits it
+into usable columns.
 }
 \examples{
-read_ballot(data = sf_bos_ballot)
+label_lookup(data = sf_bos_lookup)
 }

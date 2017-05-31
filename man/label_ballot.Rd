@@ -8,16 +8,14 @@ label_ballot(data)
 }
 \arguments{
 \item{data}{A data frame containing the ballot image data}
-
-\item{format}{Which RCV format the ballot image is in}
 }
 \value{
 A data frame with multiple columns
 }
 \description{
-Takes a data frame of a single column (i.e.
-sf_bos_ballot) and splits it into usable columns.
+Takes a data frame of a single column (i.e. sf_bos_ballot) and splits it
+into usable named columns.
 }
 \examples{
-read_ballot(data = sf_bos_ballot, format = "California")
+label_ballot(data = sf_bos_ballot)
 }
