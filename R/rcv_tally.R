@@ -1,5 +1,13 @@
 # tibbles mess this code up, fix namespace and imports
 
+#' Determines RCV round results in a dataframe
+#'
+#' @param image A dataframe containing rcv election data
+#' @param rcvcontest The election to calculate results for
+#' @return A dataframe that contains vote tallies
+#' @examples
+#' rcv_tally(image = "sf_bos_clean", rcvcontest = "Board of Supervisors, District 1")
+#' @export
 rcv_tally <- function(image, rcvcontest) {
   ballot <- image %>%
     filter(contest == rcvcontest) %>%
