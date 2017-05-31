@@ -5,6 +5,9 @@
 \alias{sf_bos_lookup}
 \title{Raw ballot lookup data from a San Francisco RCV election.}
 \format{A data frame with 644 rows and 1 variable}
+\source{
+\url{http://www.sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt}
+}
 \usage{
 sf_bos_lookup
 }
@@ -17,3 +20,4 @@ elections in Districts 1, 3, 5, 7, 9, and 11. Separating it to
 be made more useful with `sf_bos_ballot` is done in other functions.
 }
 \keyword{datasets}
+

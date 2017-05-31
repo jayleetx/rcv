@@ -24,3 +24,4 @@ ballot_tidy(rawimage = "http://www.acgov.org/rov/rcv/results/230/BerkeleyMayor/b
 key = "http://www.acgov.org/rov/rcv/results/230/BerkeleyMayor/master_lookup.txt", df = F)
 ballot_tidy(rawimage = sf_bos_ballot, key = sf_bos_lookup, df = T)
 }
+
