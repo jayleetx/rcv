@@ -63,3 +63,13 @@
 #'
 #' @format A data frame with 46 rows and 2 variables
 "cambridge_lookup"
+
+#' Raw ballot data from a Minneapolis, MN RCV election
+#'
+#' The .rda version of a .csv from a 2013 Minneapolis, MN mayoral RCV
+#' election. This data is included as an example of another ballot format
+#' for use with ballot functions.
+#'
+#' @format A data frame with 80101 rows and 5 variables
+#' @source \url{http://vote.minneapolismn.gov/www/groups/public/@clerk/documents/webcontent/2013-mayor-cvr.xlsx}
+"minneapolis_mayor_2013"
