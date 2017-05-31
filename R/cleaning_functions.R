@@ -11,8 +11,8 @@
 #' label_ballot(data = sf_bos_ballot)
 #' @importFrom dplyr %>%
 
-label_ballot <- function(data) {
-  if (nchar(data[1,1]) == 45) {
+label_ballot <- function(data, method) {
+  if (method == "WinEDS") {
     data %>%
       tidyr::separate(X1, into = c("Contest",
                                    "pref_voter_id",
@@ -26,10 +26,10 @@ label_ballot <- function(data) {
                       sep = c(7,16,23,26,33,36,43,44))
   }
 
-#  else if(tools::file_ext(data) == "csv" & nchar(data[1,1]) == 14) {
-#    data
-#  }
-# Hey Jay write this part next week when you hear back from Theo
+  else if(method == "ChoicePlus") {
+    data
+  }
+# Hey Jay write this part later
 
   else stop('incompatible ballot format')
 
