@@ -19,3 +19,4 @@ into usable named columns.
 \examples{
 label_ballot(data = sf_bos_ballot)
 }
+

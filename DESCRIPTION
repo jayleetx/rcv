@@ -9,7 +9,8 @@ Description: More about what it does (maybe more than one line)
 License: What license is it under?
 Encoding: UTF-8
 LazyData: true
-Imports: tidyverse,
+Imports:
+    tidyverse,
     forcats,
     networkD3
-RoxygenNote: 6.0.1
+RoxygenNote: 5.0.1

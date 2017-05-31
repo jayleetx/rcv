@@ -19,3 +19,4 @@ into usable columns.
 \examples{
 label_lookup(data = sf_bos_lookup)
 }
+

@@ -19,7 +19,7 @@
 #' be made more useful with `sf_bos_ballot` is done in other functions.
 #'
 #' @format A data frame with 644 rows and 1 variable
-#' @ source \url{http://www.sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt}
+#' @source \url{http://www.sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt}
 "sf_bos_lookup"
 
 #' Cleaned ballot image data from a San Francisco RCV election
