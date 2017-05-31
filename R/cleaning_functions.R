@@ -14,16 +14,18 @@
 label_ballot <- function(data, method) {
   if (method == "WinEDS") {
     data %>%
-      tidyr::separate(X1, into = c("Contest",
+      tidyr::separate(X1, into = c("contest_id",
                                    "pref_voter_id",
                                    "serial_number",
-                                   "Tally Type",
-                                   "Precinct",
+                                   "tally_type_id",
+                                   "precinct_id",
                                    "vote_rank",
-                                   "Candidate",
+                                   "candidate_id",
                                    "over_vote",
                                    "under_vote"),
-                      sep = c(7,16,23,26,33,36,43,44))
+                      sep = c(7,16,23,26,33,36,43,44)) %>%
+      dplyr::mutate(tally_type_id = as.integer(tally_type_id),
+                    vote_rank = as.integer(vote_rank))
   }
 
   else if(method == "ChoicePlus") {
@@ -56,7 +58,9 @@ label_lookup <- function(data) {
                                    "condidates_contest_id",
                                    "is_writein",
                                    "is_provisional"),
-                      sep = c(10,17,67,74,81,82))
+                      sep = c(10,17,67,74,81,82)) %>%
+      dplyr::mutate(record_type = trimws(record_type),
+                    description = trimws(description))
   }
 
   else stop('incompatible ballot format')
