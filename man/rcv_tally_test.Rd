@@ -20,4 +20,3 @@ First attempt at getting RCV results with a prebuilt dataframe
 \examples{
 rcv_tally_test(image = "sf_bos_clean", rcvcontest = "Board of Supervisors, District 1")
 }
-

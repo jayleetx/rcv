@@ -14,4 +14,3 @@ multiwinner RCV election. This data is included as an example of
 another master lookup format for use with read_lookup.
 }
 \keyword{datasets}
-

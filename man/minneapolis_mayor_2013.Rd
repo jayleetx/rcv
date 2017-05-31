@@ -17,4 +17,3 @@ election. This data is included as an example of another ballot format
 for use with ballot functions.
 }
 \keyword{datasets}
-

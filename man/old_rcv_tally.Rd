@@ -20,4 +20,3 @@ Old function for determining rcv election results
 \examples{
 old_rcv_tally(rcvimage = sf_bos_clean, rcvcontest = "Board of Supervisors, District 1")
 }
-

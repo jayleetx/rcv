@@ -18,4 +18,3 @@ Old function for creating a single style of sankey plot from rcv results
 \examples{
 old_rcv_plot(mayorresults)
 }
-

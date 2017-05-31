@@ -20,4 +20,3 @@ Determines RCV round results in a dataframe
 \examples{
 rcv_tally(image = "sf_bos_clean", rcvcontest = "Board of Supervisors, District 1")
 }
-

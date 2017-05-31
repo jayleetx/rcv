@@ -21,4 +21,3 @@ Old function for reading in raw CA rcv ballot images
 old_ballot_tidy(rawimage = "http://www.acgov.org/rov/rcv/results/230/BerkeleyMayor/ballot_image.txt",
 masterkey = "http://www.acgov.org/rov/rcv/results/230/BerkeleyMayor/master_lookup.txt")
 }
-

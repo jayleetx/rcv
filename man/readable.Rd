@@ -18,4 +18,3 @@ Alters ballot dataframe to have each row correspond to a single voter
 \examples{
 readable(sf_bos_clean)
 }
-

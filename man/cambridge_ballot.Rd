@@ -14,4 +14,3 @@ multiwinner RCV election. This data is included as an example of
 another ballot image format for use with read_ballot.
 }
 \keyword{datasets}
-
