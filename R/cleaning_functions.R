@@ -1,24 +1,47 @@
 #1234567890123456789012345678901234567890123456789012345678901234567890123456789
 
+#' Imports election data
+#'
+#' Takes data argument supplied, checks file type, and uses appropriate read-in
+#' functions to import the data
+#'
+#' @param data The file, containing ballot or lookup data
+#' @param header Whether the first row of the file is a header or not
+#' @return A data frame
+#' @examples
+#' import_data("http://www.sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt", header = F)
+import_data <- function(data, header) {
+  if ("data.frame" %in% class(data)) {
+    data
+  }
+  else if (tools::file_ext(data) == "txt") {
+    readr::read_tsv(data, col_names = header)
+  }
+  else if (tools::file_ext(data) == "csv") {
+    readr::read_csv(data, col_names = header)
+  }
+  else stop('incompatible data format')
+}
 
 
-#' Separates single column ballot data frames.
+#' Separates single column election data frames.
 #'
 #' Takes a data frame of a single column (i.e. sf_bos_ballot) and splits it
 #' into usable named columns.
 #'
-#' @param data A data frame containing the ballot image data
-#' @param method A character string detailing the method. Current
-#' supported methods are "WinEDS" and "ChoicePlus" (forthcoming), based on
+#' @param data A data frame with a single column
+#' @param image Whether the data is a "ballot" or "lookup" image
+#' @param format A character string detailing the format. Current
+#' supported formats are "WinEDS" and "ChoicePlus" (forthcoming), based on
 #' common types of software used. Contact creators with suggestions for
-#' more methods.
+#' more formats.
 #' @return A data frame with multiple columns
 #' @examples
-#' label_ballot(data = sf_bos_ballot)
+#' label(data = sf_bos_ballot, image = "ballot", format = "WinEDS")
 #' @importFrom dplyr %>%
 
-label_ballot <- function(data, method) {
-  if (method == "WinEDS") {
+label <- function(data, image, format) {
+  if (image == "ballot" & format == "WinEDS") {
     data %>%
       tidyr::separate(X1, into = c("contest_id",
                                    "pref_voter_id",
@@ -34,32 +57,12 @@ label_ballot <- function(data, method) {
                     vote_rank = as.integer(vote_rank))
   }
 
-  else if(method == "ChoicePlus") {
+  else if(image == "ballot" & method == "ChoicePlus") {
     data
   }
 # Hey Jay write this part later
 
-  else stop('incompatible ballot format')
-
-}
-
-
-#' Separates single column master lookup data frames.
-#'
-#' Takes a data frame of a single column (i.e. sf_bos_lookup) and splits it
-#' into usable columns.
-#'
-#' @param data A data frame containing the master lookup data
-#' @param method A character string detailing the method. Current
-#' supported methods are "WinEDS" and "ChoicePlus" (forthcoming), based on
-#' common types of software used. Contact creators with suggestions for
-#' more methods.
-#' @return A data frame with multiple columns
-#' @examples
-#' label_lookup(data = sf_bos_lookup)
-#' @importFrom dplyr %>%
-label_lookup <- function(data, method) {
-  if (method == "WinEDS") {
+  else if (image == "lookup" & method == "WinEDS") {
     data %>%
       tidyr::separate(X1, into = c("record_type",
                                    "id",
@@ -73,13 +76,13 @@ label_lookup <- function(data, method) {
                     description = trimws(description))
   }
 
-  else if (method == "ChoicePlus") {
+  else if (image == "lookup" & method == "ChoicePlus") {
     data
   }
 
   else stop('incompatible ballot format')
-
 }
+
 
 #' Replaces number string codes in ballot with character strings from lookup
 #'
