@@ -64,5 +64,7 @@ rcv_tally <- function(image, rcvcontest) {
     elim <- rbind(elim, loser)
   }
 
-  return(results)
+  results %>% rownames_to_column("names") %>%
+    arrange(names == "NA", rowSums(is.na(.)), desc(.[ ,ncol(.)])) %>%
+    column_to_rownames("names")
 }
