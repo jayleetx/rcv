@@ -16,3 +16,8 @@ You can install the development version of `rcv`:
 ## Basic Workflow Demo
 
 Put stuff here later talking about how to use the functions
+
+
+Created by:
+- Jay Lee, jaylee@reed.edu
+- Matthew Yancheff, myancheff@reed.edu
