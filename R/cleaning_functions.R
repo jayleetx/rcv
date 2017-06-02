@@ -147,12 +147,12 @@ characterize <- function(ballot, lookup) {
 #' @return The ballot data, but now "readable" so votes can be understood
 #' @examples clean_ballot(ballot = sf_bos_ballot, b_header = T,
 #' lookup = sf_bos_lookup, l_header = T, format = "WinEDS")
+#' @importFrom dplyr %>%
 
 clean_ballot <- function(ballot, b_header, lookup, l_header, format) {
   a <- import_data(data = ballot, header = b_header) %>%
     label(image = "ballot", format = format)
   b <- import_data(data = lookup, header = l_header) %>%
     label(image = "lookup", format = format)
-  c <- characterize(ballot = a, lookup = b)
-  return(c)
+  characterize(ballot = a, lookup = b)
 }
