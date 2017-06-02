@@ -3,8 +3,8 @@
 #' Work in progress package with a few work in progress functions.
 #'
 #' @section rcv Functions:
-#' old_ballot_tidy(), old_rcv_tally(), old_rcv_plot(),
-#' readable(), ballot_tidy()
+#' import_data(), label(), characterize(), clean_ballot(),
+#' readable(), rcv_tally()
 #'
 #' @docType package
 #' @name rcv
