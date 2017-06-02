@@ -65,9 +65,9 @@ rcv_tally <- function(image, rcvcontest) {
   }
 
   results <- results %>%
-    rownames_to_column("names") %>%
+    tibble::rownames_to_column("names") %>%
     arrange(names == "NA", rowSums(is.na(.)), desc(.[ ,ncol(.)])) %>%
-    column_to_rownames("names")
+    tibble::column_to_rownames("names")
 
   return(results)
 }
