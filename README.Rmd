@@ -80,4 +80,4 @@ results <- rcv_tally(sf_bos_clean, "Board of Supervisors, District 1")
 knitr::kable(results)
 ```
 
-Sandra Lee Fewer wins in Round 9, with 14,704 votes to Marjan Philhour's 13,100. 4,348 votes were left blank, marked invalid, or exhausted in this election.
+Sandra Lee Fewer wins in Round 9, with 14,705 votes to Marjan Philhour's 13,126. 4,360 votes were left blank, marked invalid, or exhausted in this election.
