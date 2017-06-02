@@ -10,9 +10,5 @@
 #' @name rcv
 NULL
 
-#' @import dplyr
-#' @import tibble
-#' @import tidyr
-#' @import readr
 #' @import forcats
 NULL
