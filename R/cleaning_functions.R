@@ -10,6 +10,7 @@
 #' @return A data frame
 #' @examples
 #' import_data("http://www.sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt", header = F)
+#' @export
 import_data <- function(data, header) {
   if ("data.frame" %in% class(data)) {
     data
@@ -39,6 +40,7 @@ import_data <- function(data, header) {
 #' @examples
 #' label(data = sf_bos_ballot, image = "ballot", format = "WinEDS")
 #' @importFrom dplyr %>%
+#' @export
 
 label <- function(data, image, format) {
   if (image == "ballot" & format == "WinEDS") {
@@ -97,6 +99,7 @@ label <- function(data, image, format) {
 #' @examples
 #' characterize(ballot = sf_ballot_labelled, lookup = sf_lookup_labelled)
 #' @importFrom dplyr %>%
+#' @export
 characterize <- function(ballot, lookup) {
   candidates <- lookup %>%
     dplyr::filter(record_type == "Candidate") %>%
@@ -148,6 +151,7 @@ characterize <- function(ballot, lookup) {
 #' @examples clean_ballot(ballot = sf_bos_ballot, b_header = T,
 #' lookup = sf_bos_lookup, l_header = T, format = "WinEDS")
 #' @importFrom dplyr %>%
+#' @export
 
 clean_ballot <- function(ballot, b_header, lookup, l_header, format) {
   a <- import_data(data = ballot, header = b_header) %>%

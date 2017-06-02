@@ -10,9 +10,9 @@
 #' @export
 rcv_tally <- function(image, rcvcontest) {
   ballot <- image %>%
-    filter(contest == rcvcontest) %>%
-    mutate(candidate = ifelse(is.na(candidate), "NA", candidate)) %>%
-    select(pref_voter_id, vote_rank, candidate)
+    dplyr::filter(contest == rcvcontest) %>%
+    dplyr::mutate(candidate = ifelse(is.na(candidate), "NA", candidate)) %>%
+    dplyr::select(pref_voter_id, vote_rank, candidate)
 
   n.cand <- length(unique(ballot$candidate))
   results <- data.frame(matrix(rep(NA, n.cand*(n.cand-2)), nrow = n.cand))
@@ -28,21 +28,21 @@ rcv_tally <- function(image, rcvcontest) {
   for (j in 1:(n.cand - 2)) {
     if (j >= 2) {
       transfers <- ballot %>%
-        filter(vote_rank == min(vote_rank), candidate %in% loser) %>%
-        select(pref_voter_id)
-    } else transfers <- ballot %>% select(pref_voter_id)
+        dplyr::filter(vote_rank == min(vote_rank), candidate %in% loser) %>%
+        dplyr::select(pref_voter_id)
+    } else transfers <- ballot %>% dplyr::select(pref_voter_id)
 
     ballot <- ballot %>%
-      filter(!(candidate %in% elim$candidate))
+      dplyr::filter(!(candidate %in% elim$candidate))
 
     round <- ballot %>%
-      filter(pref_voter_id %in% transfers$pref_voter_id) %>%
-      group_by(pref_voter_id) %>%
-      filter(vote_rank == min(vote_rank)) %>%
-      ungroup() %>%
-      group_by(candidate) %>%
-      summarise(total = n()) %>%
-      data.frame()
+      dplyr::filter(pref_voter_id %in% transfers$pref_voter_id) %>%
+      dplyr::group_by(pref_voter_id) %>%
+      dplyr::filter(vote_rank == min(vote_rank)) %>%
+      dplyr::ungroup() %>%
+      dplyr::group_by(candidate) %>%
+      dplyr::summarise(total = n()) %>%
+      dplyr::data.frame()
 
     row.names(round) <- round$candidate
 
@@ -56,16 +56,16 @@ rcv_tally <- function(image, rcvcontest) {
     }
 
     loser <- round %>%
-      filter(candidate != "NA") %>%
-      filter(total == min(total)) %>%
-      select(candidate)
+      dplyr::filter(candidate != "NA") %>%
+      dplyr::filter(total == min(total)) %>%
+      dplyr::select(candidate)
 
     elim <- rbind(elim, loser)
   }
 
   results <- results %>%
     tibble::rownames_to_column("names") %>%
-    arrange(names == "NA", rowSums(is.na(.)), desc(.[ ,ncol(.)])) %>%
+    dplyr::arrange(names == "NA", rowSums(is.na(.)), desc(.[ ,ncol(.)])) %>%
     tibble::column_to_rownames("names")
 
   return(results)

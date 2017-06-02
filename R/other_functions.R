@@ -5,6 +5,7 @@
 #' @examples
 #' readable(sf_bos_clean)
 #' @importFrom dplyr %>%
+#' @export
 readable <- function(clean) {
   clean %>%
     dplyr::select(contest,

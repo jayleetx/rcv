@@ -10,7 +10,10 @@
 #' @name rcv
 NULL
 
-#' @import tidyverse
+#' @import dplyr
+#' @importFrom tibble rownames_to_columns
+#' @importFrom tibble column_to_rownames
+#' @import tidyr
+#' @import readr
 #' @import forcats
-#' @import networkD3
 NULL
