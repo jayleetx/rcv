@@ -26,7 +26,7 @@ rcv_tally <- function(image, rcvcontest) {
   elim <- data.frame(candidate = character())
 
   for (j in 1:(n.cand - 2)) {
-    if (j != 1) {
+    if (j >= 2) {
       transfers <- ballot %>%
         filter(vote_rank == min(vote_rank), candidate %in% loser) %>%
         select(pref_voter_id)
@@ -43,17 +43,16 @@ rcv_tally <- function(image, rcvcontest) {
       group_by(candidate) %>%
       summarise(total = n()) %>%
       data.frame()
-      # %>%
-      # arrange()
-
-      #results[, j] <- results[, j - 1] + round[, 2]
 
     row.names(round) <- round$candidate
 
     for (i in unique(round$candidate)) {
-      if (j !=1) {
-        results[i, j] <- (results[i, j-1] + round[i, 2])
-      } else results [i, j] <- round[i, 2]
+      if (j >= 2) {
+        round[i, 2] <- (results[i, j-1] + round[i, 2])
+      }
+
+      results [i, j] <- round[i, 2]
+
     }
 
     loser <- round %>%
