@@ -42,7 +42,7 @@ rcv_tally <- function(image, rcvcontest) {
       dplyr::ungroup() %>%
       dplyr::group_by(candidate) %>%
       dplyr::summarise(total = n()) %>%
-      dplyr::data.frame()
+      data.frame()
 
     row.names(round) <- round$candidate
 

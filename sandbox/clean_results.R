@@ -7,9 +7,10 @@ clean_results <- function(results) {
   for (i in 1:ncol(results)) {
     exhausted[1, i] <- total - sum(results[, i], na.rm = T)
   }
-  clean <- rbind(results, exhausted)
+  exhausted[1, ] <- exhausted[1, ] + results["NA", ]
+  results["NA", ] <- exhausted[1, ]
 
   # create proprotion and transfer dataframes that will be attached to clean
 
-  return(clean)
+  return(results)
 }
