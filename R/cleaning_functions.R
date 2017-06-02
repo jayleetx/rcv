@@ -57,12 +57,12 @@ label <- function(data, image, format) {
                     vote_rank = as.integer(vote_rank))
   }
 
-  else if(image == "ballot" & method == "ChoicePlus") {
+  else if(image == "ballot" & format == "ChoicePlus") {
     data
   }
 # Hey Jay write this part later
 
-  else if (image == "lookup" & method == "WinEDS") {
+  else if (image == "lookup" & format == "WinEDS") {
     data %>%
       tidyr::separate(X1, into = c("record_type",
                                    "id",
@@ -76,7 +76,7 @@ label <- function(data, image, format) {
                     description = trimws(description))
   }
 
-  else if (image == "lookup" & method == "ChoicePlus") {
+  else if (image == "lookup" & format == "ChoicePlus") {
     data
   }
 
@@ -98,19 +98,19 @@ label <- function(data, image, format) {
 #' characterize(ballot = sf_ballot_labelled, lookup = sf_lookup_labelled)
 #' @importFrom dplyr %>%
 characterize <- function(ballot, lookup) {
-  a_candidates <- lookup %>%
+  candidates <- lookup %>%
     dplyr::filter(record_type == "Candidate") %>%
     dplyr::select(id, description) %>%
     dplyr::rename(candidate = description)
-  a_contests <- lookup %>%
+  contests <- lookup %>%
     dplyr::filter(record_type == "Contest") %>%
     dplyr::select(id, description) %>%
     dplyr::rename(contest = description)
-  a_precincts <- lookup %>%
+  precincts <- lookup %>%
     dplyr::filter(record_type == "Precinct") %>%
     dplyr::select(id, description) %>%
     dplyr::rename(precinct = description)
-  a_tallies <- lookup %>%
+  tallies <- lookup %>%
     dplyr::filter(record_type == "Tally Type") %>%
     dplyr::select(id, description) %>%
     dplyr::mutate(id = as.integer(id)) %>%
@@ -129,6 +129,30 @@ characterize <- function(ballot, lookup) {
            candidate,
            over_vote,
            under_vote)
-
-  rm(list=ls(pattern="a_"))
   }
+
+#' Master one-step cleaning function
+#'
+#' Wraps `import_data`, `label`, and `characterize` to clean the ballot
+#' image in one step.
+#'
+#' @param ballot The raw ballot image
+#' @param b_header Whether the ballot image has a header line or not
+#' @param lookup The raw lookup image
+#' @param l_header Whether the lookup image has a header line or not
+#' @param format A character string detailing the format. Current
+#' supported formats are "WinEDS" and "ChoicePlus" (forthcoming), based on
+#' common types of software used. Contact creators with suggestions for
+#' more formats.
+#' @return The ballot data, but now "readable" so votes can be understood
+#' @examples clean_ballot(ballot = sf_bos_ballot, b_header = T,
+#' lookup = sf_bos_lookup, l_header = T, format = "WinEDS")
+
+clean_ballot <- function(ballot, b_header, lookup, l_header, format) {
+  a <- import_data(data = ballot, header = b_header) %>%
+    label(image = "ballot", format = format)
+  b <- import_data(data = lookup, header = l_header) %>%
+    label(image = "lookup", format = format)
+  c <- characterize(ballot = a, lookup = b)
+  return(c)
+}
