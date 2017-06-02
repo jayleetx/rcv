@@ -4,7 +4,6 @@
 #' @return A dataframe that can be easily read and understood by humans
 #' @examples
 #' readable(sf_bos_clean)
-#' @importFrom dplyr %>%
 #' @export
 readable <- function(clean) {
   clean %>%

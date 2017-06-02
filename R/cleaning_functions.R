@@ -39,7 +39,6 @@ import_data <- function(data, header) {
 #' @return A data frame with multiple columns
 #' @examples
 #' label(data = sf_bos_ballot, image = "ballot", format = "WinEDS")
-#' @importFrom dplyr %>%
 #' @export
 
 label <- function(data, image, format) {
@@ -98,7 +97,6 @@ label <- function(data, image, format) {
 #' @return The ballot data, but now "readable" so votes can be understood
 #' @examples
 #' characterize(ballot = sf_ballot_labelled, lookup = sf_lookup_labelled)
-#' @importFrom dplyr %>%
 #' @export
 characterize <- function(ballot, lookup) {
   candidates <- lookup %>%
@@ -150,7 +148,6 @@ characterize <- function(ballot, lookup) {
 #' @return The ballot data, but now "readable" so votes can be understood
 #' @examples clean_ballot(ballot = sf_bos_ballot, b_header = T,
 #' lookup = sf_bos_lookup, l_header = T, format = "WinEDS")
-#' @importFrom dplyr %>%
 #' @export
 
 clean_ballot <- function(ballot, b_header, lookup, l_header, format) {
