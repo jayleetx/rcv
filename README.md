@@ -33,7 +33,7 @@ Basic Workflow Demo
 head(sf_bos_ballot)
 ```
 
-    ## # A tibble: 6 × 1
+    ## # A tibble: 6 x 1
     ##                                              X1
     ##                                           <chr>
     ## 1 000000900000660300000010020000406001000012800
@@ -47,7 +47,7 @@ head(sf_bos_ballot)
 head(sf_bos_lookup)
 ```
 
-    ## # A tibble: 6 × 1
+    ## # A tibble: 6 x 1
     ##                                                                            X1
     ##                                                                         <chr>
     ## 1 Candidate 0000121SAMUEL KWONG                                      00000010
@@ -116,16 +116,16 @@ knitr::kable(results)
 
 |                    |  round1|  round2|  round3|  round4|  round5|  round6|  round7|  round8|  round9|
 |--------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
-| SANDRA LEE FEWER   |   12550|   12689|   12748|   12932|   13000|   14292|   14413|   14540|   14704|
-| MARJAN PHILHOUR    |   11067|   11135|   11309|   11436|   11539|   12513|   12755|   12917|   13100|
-| BRIAN J. LARKIN    |     747|     773|     810|     870|     929|    1085|    1272|    1360|      NA|
-| SHERMAN R. D'SILVA |     557|     566|     594|     637|     704|     849|     950|      NA|      NA|
-| RICHIE GREENBERG   |     974|     984|    1086|    1132|    1315|    1456|      NA|      NA|      NA|
-| DAVID LEE          |    3396|    3408|    3633|    3699|    3756|      NA|      NA|      NA|      NA|
-| JASON JUNGREIS     |     611|     626|     646|     670|      NA|      NA|      NA|      NA|      NA|
-| JONATHAN LYENS     |     609|     652|     669|      NA|      NA|      NA|      NA|      NA|      NA|
-| SAMUEL KWONG       |     740|     744|      NA|      NA|      NA|      NA|      NA|      NA|      NA|
+| SANDRA LEE FEWER   |   12550|   12689|   12777|   12840|   13029|   13093|   13225|   13354|   14705|
+| MARJAN PHILHOUR    |   11067|   11135|   11247|   11348|   11487|   11680|   11837|   12086|   13126|
+| DAVID LEE          |    3396|    3408|    3488|    3551|    3622|    3857|    3961|    4093|      NA|
+| RICHIE GREENBERG   |     974|     984|    1042|    1220|    1272|    1386|    1508|      NA|      NA|
+| BRIAN J. LARKIN    |     747|     773|     832|     896|     956|     997|      NA|      NA|      NA|
+| SAMUEL KWONG       |     740|     744|     760|     785|     814|      NA|      NA|      NA|      NA|
+| JONATHAN LYENS     |     609|     652|     679|     726|      NA|      NA|      NA|      NA|      NA|
+| JASON JUNGREIS     |     611|     626|     654|      NA|      NA|      NA|      NA|      NA|      NA|
+| SHERMAN R. D'SILVA |     557|     566|      NA|      NA|      NA|      NA|      NA|      NA|      NA|
 | ANDY THORNLEY      |     359|      NA|      NA|      NA|      NA|      NA|      NA|      NA|      NA|
-| NA                 |    3499|    3522|    3573|    3615|    3660|    4083|    4195|    4259|    4348|
+| NA                 |    3499|    3522|    3574|    3626|    3667|    3722|    3799|    3923|    4360|
 
 Sandra Lee Fewer wins in Round 9, with 14,704 votes to Marjan Philhour's 13,100. 4,348 votes were left blank, marked invalid, or exhausted in this election.
