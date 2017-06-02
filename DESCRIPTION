@@ -1,12 +1,17 @@
 Package: rcv
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Functions for Ranked Choice Voting Data
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
-Description: More about what it does (maybe more than one line)
-    Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+Authors@R: c(
+    person("Jay", "Lee", email = "jaylee@reed.edu", role = c("aut")),
+    person("Matthew", "Yancheff", email = "yanchefm@reed.edu", role = c("aut", "cre")))
+Description: A collection of ranked choice voting data and functions to 
+    manipulate, run elections with, and visualize this data and others. 
+    It can bring in raw data, transform it into a ballot you can read, 
+    and return election results for an RCV contest.
+URL: https://github.com/ds-elections/rcv
+BugReports: https://github.com/ds-elections/rcv/issues
+License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:

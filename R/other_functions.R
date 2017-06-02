@@ -14,3 +14,5 @@ readable <- function(clean) {
                   candidate) %>%
     tidyr::spread(key = vote_rank, value = candidate)
 }
+
+# Added line for travis build check

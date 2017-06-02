@@ -3,19 +3,21 @@ output: github_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, cache = TRUE)
+devtools::load_all(".")
+library(dplyr)
 ```
 
 # Ranked Choice Voting -- R Package
 
 `rcv` helps you work directly with raw ballot image and cast vote record data to run elections.
 
-Features:
+__Features__
+
 * Read in ballot image and master lookup files
 * Merge these files to get a "readable" ballot layout
 * Conduct elections, and view a round-by-round table of results
-
-The style of this README is inspired by the [googlesheets]("github.com/jennybc/googlesheets") R package.
+* Compatible with `dplyr`/`magrittr` pipe syntax (`%>%`)
 
 You can install the development version of `rcv`:
 
@@ -23,11 +25,59 @@ You can install the development version of `rcv`:
 devtools::install_github("ds-elections/rcv")
 ```
 
-## Basic Workflow Demo
-
-Put stuff here later talking about how to use the functions
-
-
 Created by:
+
 - Jay Lee, jaylee@reed.edu
 - Matthew Yancheff, yanchefm@reed.edu
+
+The style of this README is inspired by the [googlesheets]("github.com/jennybc/googlesheets") R package.
+
+## Basic Workflow Demo
+
+`sf_bos_ballot` is included as an example raw ballot image, and `sf_bos_lookup` as an example raw master lookup. Both are included as `.rda`s, and they are in the "WinEDS" format. This data comes from the 2016 San Francisco Board of Supervisors elections ([San Francisco Department of Elections](http://www.sfelections.org/results/20161108/#english_detail)).
+
+```{r}
+head(sf_bos_ballot)
+head(sf_bos_lookup)
+```
+
+#### Cleaning Data
+
+The streamlined version of this process is done with the `clean_ballot()` function. `b_header` and `l_header` are logical values, based on whether the ballot and lookup file respectively have a header for the first row.
+
+```{r}
+cleaned <- clean_ballot(ballot = sf_bos_ballot, b_header = T, 
+                        lookup = sf_bos_lookup, l_header = T, 
+                        format = "WinEDS")
+knitr::kable(head(readable(cleaned)))
+```
+
+To access intermediate steps, the following process can be used.
+
+```{r}
+# Import and label ballot image
+a <- import_data(data = sf_bos_ballot, header = T) %>%
+    label(image = "ballot", format = "WinEDS")
+
+# Import and label master lookup
+b <- import_data(data = sf_bos_lookup, header = T) %>%
+    label(image = "lookup", format = "WinEDS")
+
+# Merge these two tables
+c <- characterize(ballot = a, lookup = b)
+
+knitr::kable(head(readable(c)))
+```
+
+The `readable()` function takes the clean image, which is formatted for ease in computation, and formats it to be easily read manually.
+
+#### Running Elections
+
+This is done with the `rcv_tally()` function. `sf_bos_clean` is included as an example of a pre-cleaned ballot using the functions above. We will run the District 1 election from this ballot image.
+
+```{r}
+results <- rcv_tally(sf_bos_clean, "Board of Supervisors, District 1")
+knitr::kable(results)
+```
+
+Sandra Lee Fewer wins in Round 9, with 14,704 votes to Marjan Philhour's 13,100. 4,348 votes were left blank, marked invalid, or exhausted in this election.
