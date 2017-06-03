@@ -8,7 +8,5 @@
 #'
 #' @docType package
 #' @name rcv
-NULL
-
 #' @importFrom dplyr %>%
 NULL
