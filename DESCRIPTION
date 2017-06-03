@@ -19,5 +19,6 @@ Imports:
     dplyr,
     tibble,
     tidyr,
-    readr
+    readr,
+    networkD3
 RoxygenNote: 6.0.1
