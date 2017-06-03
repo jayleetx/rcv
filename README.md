@@ -128,4 +128,4 @@ knitr::kable(results)
 | ANDY THORNLEY      |     359|      NA|      NA|      NA|      NA|      NA|      NA|      NA|      NA|
 | NA                 |    3499|    3522|    3574|    3626|    3667|    3722|    3799|    3923|    4360|
 
-Sandra Lee Fewer wins in Round 9, with 14,704 votes to Marjan Philhour's 13,100. 4,348 votes were left blank, marked invalid, or exhausted in this election.
+Sandra Lee Fewer wins in Round 9, with 14,705 votes to Marjan Philhour's 13,126. 4,360 votes were left blank, marked invalid, or exhausted in this election.
