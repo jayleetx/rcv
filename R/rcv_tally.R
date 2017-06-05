@@ -6,7 +6,7 @@
 #' @param rcvcontest The election to calculate results for
 #' @return A dataframe that contains vote tallies
 #' @examples
-#' rcv_tally(image = "sf_bos_clean", rcvcontest = "Board of Supervisors, District 1")
+#' rcv_tally(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 1")
 #' @export
 rcv_tally <- function(image, rcvcontest) {
   ballot <- image %>%
