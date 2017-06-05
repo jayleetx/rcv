@@ -7,7 +7,7 @@
 readable(clean)
 }
 \arguments{
-\item{x}{A tidy dataframe that comes from ballot_tidy()}
+\item{clean}{A tidy dataframe that comes from ballot_tidy()}
 }
 \value{
 A dataframe that can be easily read and understood by humans

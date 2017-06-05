@@ -9,7 +9,8 @@
 #' @param header Whether the first row of the file is a header or not
 #' @return A data frame
 #' @examples
-#' import_data("http://www.sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt", header = F)
+#' import_data("http://www.sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt",
+#'  header = FALSE)
 #' @export
 import_data <- function(data, header) {
   if ("data.frame" %in% class(data)) {
@@ -146,8 +147,8 @@ characterize <- function(ballot, lookup) {
 #' common types of software used. Contact creators with suggestions for
 #' more formats.
 #' @return The ballot data, but now "readable" so votes can be understood
-#' @examples clean_ballot(ballot = sf_bos_ballot, b_header = T,
-#' lookup = sf_bos_lookup, l_header = T, format = "WinEDS")
+#' @examples clean_ballot(ballot = sf_bos_ballot, b_header = TRUE,
+#' lookup = sf_bos_lookup, l_header = TRUE, format = "WinEDS")
 #' @export
 
 clean_ballot <- function(ballot, b_header, lookup, l_header, format) {
