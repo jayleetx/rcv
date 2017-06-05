@@ -8,7 +8,8 @@ devtools::load_all(".")
 library(dplyr)
 ```
 
-# Ranked Choice Voting -- R Package
+# Ranked Choice Voting — R Package
+[![Build Status](https://travis-ci.org/ds-elections/rcv.svg?branch=master)](https://travis-ci.org/ds-elections/rcv)
 
 `rcv` helps you work directly with raw ballot image and cast vote record data to run elections.
 
