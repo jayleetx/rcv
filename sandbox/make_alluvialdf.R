@@ -1,5 +1,5 @@
 make_alluvialdf <- function(ballot, results) {
-  voters <- ballot %>% select(pref_voter_id)
+  voters <- ballot %>% unique(select(ballot, pref_voter_id))
 
 }
 
