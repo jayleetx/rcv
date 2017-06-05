@@ -28,6 +28,6 @@ Wraps `import_data`, `label`, and `characterize` to clean the ballot
 image in one step.
 }
 \examples{
-clean_ballot(ballot = sf_bos_ballot, b_header = T,
-lookup = sf_bos_lookup, l_header = T, format = "WinEDS")
+clean_ballot(ballot = sf_bos_ballot, b_header = TRUE,
+lookup = sf_bos_lookup, l_header = TRUE, format = "WinEDS")
 }
