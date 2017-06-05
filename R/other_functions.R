@@ -1,6 +1,6 @@
 #' Alters ballot dataframe to have each row correspond to a single voter
 #'
-#' @param x A tidy dataframe that comes from ballot_tidy()
+#' @param clean A tidy dataframe that comes from ballot_tidy()
 #' @return A dataframe that can be easily read and understood by humans
 #' @examples
 #' readable(sf_bos_clean)
@@ -34,6 +34,8 @@ add_exhausted <- function(results) {
   }
   exhausted[1, ] <- exhausted[1, ] + results["NA", ]
   results["NA", ] <- exhausted[1, ]
+  results <- results %>%
+    tibble::rownames_to_column("candidates")
 
   return(results)
 }
