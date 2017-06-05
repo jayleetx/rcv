@@ -1,4 +1,4 @@
-clean_results <- function(results) {
+add_exhausted <- function(results) {
 
   total <- sum(results[, 1], na.rm = T)
   exhausted <- data.frame(matrix(rep(NA, ncol(results)), nrow = 1))
@@ -10,7 +10,16 @@ clean_results <- function(results) {
   exhausted[1, ] <- exhausted[1, ] + results["NA", ]
   results["NA", ] <- exhausted[1, ]
 
-  # create proprotion and transfer dataframes that will be attached to clean
+  return(results)
+}
 
+add_proportions <- function(results) {}
+add_transfer <- function(results) {}
+
+clean_results <- function(results){
+  results <- results %>%
+    add_exhausted() %>%
+    add_proportions() %>%
+    add_transfer()
   return(results)
 }
