@@ -4,13 +4,15 @@
 \name{cambridge_lookup}
 \alias{cambridge_lookup}
 \title{Raw lookup data from a Cambridge, MA RCV election}
-\format{A data frame with 46 rows and 2 variables}
+\format{A data frame with 588 rows and 6 variables}
 \usage{
 cambridge_lookup
 }
 \description{
 The .rda version of a .csv from a 2005 Cambridge, MA City Council
-multiwinner RCV election. This data is included as an example of
-another master lookup format for use with read_lookup.
+multiwinner RCV election. This data is included as an example of another
+master lookup format for use with the label function. This data includes
+information other than the candidate names and codes, but we only use the
+candidate names and codes.
 }
 \keyword{datasets}

@@ -48,7 +48,7 @@
 #'
 #' The .rda version of a .csv from a 2005 Cambridge, MA City Council
 #' multiwinner RCV election. This data is included as an example of
-#' another ballot image format for use with read_ballot.
+#' another ballot image format for use with the label function.
 #'
 #' @format A data frame with 17959 rows and 26 variables
 "cambridge_ballot"
@@ -56,10 +56,12 @@
 #' Raw lookup data from a Cambridge, MA RCV election
 #'
 #' The .rda version of a .csv from a 2005 Cambridge, MA City Council
-#' multiwinner RCV election. This data is included as an example of
-#' another master lookup format for use with read_lookup.
+#' multiwinner RCV election. This data is included as an example of another
+#' master lookup format for use with the label function. This data includes
+#' information other than the candidate names and codes, but we only use the
+#' candidate names and codes.
 #'
-#' @format A data frame with 46 rows and 2 variables
+#' @format A data frame with 588 rows and 6 variables
 "cambridge_lookup"
 
 #' Raw ballot data from a Minneapolis, MN RCV election
