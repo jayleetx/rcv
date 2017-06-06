@@ -20,8 +20,15 @@ a <- data %>%
   tidyr::unite(col = "contest",
                V3, a,
                sep = ", ") %>%
-  mutate(`1` = replace(`1`, which(`1` == ""), NA))
+  dplyr::mutate(`1` = replace(`1`, which(`1` == ""), NA))
 
-colnames(a) <- c("ward","precinct", "unique", "style", "contest", as.character(c(1:(ncol(a)-5))))
-
-return(a)
+colnames(a) <- c("ward","precinct", "unique", "style", "contest",
+                 as.character(c(1:(ncol(a)-5))))
+tall <- a %>%
+  tidyr::gather(key = vote_rank,
+                value = candidate_id,
+                c(6:(ncol(a))),
+                na.rm = T) %>%
+  dplyr::arrange(ward, precinct, unique) %>%
+  tidyr::separate()
+return(tall)
