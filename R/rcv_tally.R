@@ -65,7 +65,9 @@ rcv_tally <- function(image, rcvcontest) {
 
   results <- results %>%
     tibble::rownames_to_column("candidate") %>%
-    dplyr::arrange(candidate == "NA", rowSums(is.na(.)), desc(.[ ,ncol(.)]))
+    dplyr::arrange(candidate == "NA", rowSums(is.na(.)), desc(.[ ,ncol(.)])) %>%
+    tibble::column_to_rownames("candidate") %>%
+    add_exhausted()
 
   return(results)
 }
