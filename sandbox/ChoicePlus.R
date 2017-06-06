@@ -30,5 +30,10 @@ tall <- a %>%
                 c(6:(ncol(a))),
                 na.rm = T) %>%
   dplyr::arrange(ward, precinct, unique) %>%
-  tidyr::separate()
+  tidyr::separate(candidate_id,
+                  into = c("candidate_id", "a"),
+                  sep = "\\[",
+                  extra = "merge",
+                  remove = T) %>%
+  select(-a)
 return(tall)
