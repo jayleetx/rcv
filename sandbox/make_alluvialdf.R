@@ -4,10 +4,8 @@ make_alluvialdf <- function(image, rcvcontest, results) {
     dplyr::filter(contest == rcvcontest) %>%
     dplyr::select(3:ncol(.))
 
-  #This group_by doens't work, fix
-  #Also having numbers as column names seems to be wonky
   init <- readim %>%
-    count(names(.)) %>%
+    count_(lapply(names(readim), as.name), sort = T) %>%
     ungroup() %>%
     mutate(id = rownames(.))
 
