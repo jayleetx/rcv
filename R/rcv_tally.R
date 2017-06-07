@@ -10,7 +10,8 @@
 #' @export
 rcv_tally <- function(image, rcvcontest) {
   ballot <- image %>%
-    dplyr::filter(contest == rcvcontest) %>%
+    dplyr::filter(contest == rcvcontest,
+                  stringr::str_detect(candidate, "=") %in% c(F, NA)) %>%
     dplyr::mutate(candidate = ifelse(is.na(candidate), "NA", candidate)) %>%
     dplyr::select(pref_voter_id, vote_rank, candidate)
 
