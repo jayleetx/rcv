@@ -3,6 +3,7 @@
 \docType{data}
 \name{sf_bos_clean}
 \alias{sf_bos_clean}
+\alias{sf_bos_clean}
 \title{Cleaned ballot image data from a San Francisco RCV election}
 \format{A data frame with 643806 rows and 9 variables:
 \describe{
@@ -22,10 +23,16 @@
   }}
 \usage{
 sf_bos_clean
+
+sf_bos_clean
 }
 \description{
 A tidied version of `sf_bos_ballot` in a "tall" format,
 readable to see voters' information, including candidate
 rankings, precinct, and over-/under-vote codings.
+
+A tidied version of `cambridge_ballot` in a "tall" format,
+readable to see voters' information, including candidate
+rankings, ward, and precinct.
 }
 \keyword{datasets}

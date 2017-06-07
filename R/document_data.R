@@ -66,6 +66,25 @@
 #' @format A data frame with 588 rows and 6 variables
 "cambridge_lookup"
 
+#' Cleaned ballot image data from a San Francisco RCV election
+#'
+#' A tidied version of `cambridge_ballot` in a "tall" format,
+#' readable to see voters' information, including candidate
+#' rankings, ward, and precinct.
+#'
+#' @format A data frame with 108752 rows and 7 variables:
+#' \describe{
+#'   \item{pref_voter_id}{a unique key identifying an individual voter }
+#'   \item{ward}{which city ward the voter voted in}
+#'   \item{precinct}{which city precinct the voter voted in}
+#'   \item{style}{which ballot style the voter had; different styles list
+#'   different candidates first on the ballot to remove that advantage}
+#'   \item{contest}{which election this candidate ranking applies to}
+#'   \item{vote_rank}{the rank given to the candidate by the voter}
+#'   \item{candidate}{the chosen candidate for the specified vote rank}
+#'   }
+"sf_bos_clean"
+
 #' Raw ballot data from a Minneapolis, MN RCV election
 #'
 #' The .rda version of a .csv from a 2013 Minneapolis, MN mayoral RCV
