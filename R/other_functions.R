@@ -9,7 +9,6 @@ readable <- function(clean) {
   clean %>%
     dplyr::select(contest,
                   pref_voter_id,
-                  precinct,
                   vote_rank,
                   candidate) %>%
     tidyr::spread(key = vote_rank, value = candidate)
