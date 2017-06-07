@@ -83,7 +83,7 @@
 #'   \item{vote_rank}{the rank given to the candidate by the voter}
 #'   \item{candidate}{the chosen candidate for the specified vote rank}
 #'   }
-"sf_bos_clean"
+"cambridge_clean"
 
 #' Raw ballot data from a Minneapolis, MN RCV election
 #'
