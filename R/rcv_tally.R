@@ -1,5 +1,3 @@
-# tibbles mess this code up, fix namespace and imports
-
 #' Determines RCV round results in a dataframe
 #'
 #' @param image A dataframe containing rcv election data
