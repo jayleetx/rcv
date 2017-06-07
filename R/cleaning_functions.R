@@ -108,7 +108,7 @@ label <- function(data, image, format) {
       dplyr::filter(V1 == "20") %>%
       dplyr::select(V2,V3) %>%
       dplyr::rename(id = V2,
-                    description = V3)
+                    candidate = V3)
   }
 
   else stop('incompatible ballot format')
@@ -170,6 +170,7 @@ characterize <- function(ballot, lookup, format) {
 
   else if (format == "ChoicePlus") {
     dplyr::left_join(ballot, lookup, by = c("candidate_id" = "id")) %>%
+      dplyr::mutate(candidate = ifelse(is.na(candidate), candidate_id, candidate)) %>%
       dplyr::select(-candidate_id)
   }
 }
