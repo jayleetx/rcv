@@ -49,7 +49,7 @@ make_alluvialdf <- function(image, rcvcontest, results) {
       if (i >= 2) tempelim <- elim[1:(i-1),]
 
       path[,i] <- votepattern %>%
-        filter(!(candidate %in% tempelim$candidate))
+        filter(!(candidate %in% tempelim)) %>%
         filter(rank == min(rank)) %>%
         select(candidate)
     }
@@ -61,7 +61,7 @@ make_alluvialdf <- function(image, rcvcontest, results) {
 
   # get final frequencies attempt
   alluvialdf <- alluvialdf %>%
-    count_(lapply(names(alluvialdf)[-ncol(alluvialdf)], as.name), sort = T) %>%
+    count_(lapply(names(alluvialdf)[-ncol(alluvialdf)], as.name), wt = frequency, sort = T) %>%
     ungroup()
 
   # alluvial function cannot have NAs in it, so replace with "NA"
