@@ -1,16 +1,15 @@
 make_alluvialdf <- function(image, rcvcontest, results) {
   # create df of all voting combinations in election
   readim <- readable(image) %>%
-    filter(contest == rcvcontest)
-  readim <- select(readim, 4:ncol(readim))
+    dplyr::filter(contest == rcvcontest) %>%
+    dplyr::select(3:ncol(.))
 
   #This group_by doens't work, fix
   #Also having numbers as column names seems to be wonky
   init <- readim %>%
-    group_by(names(readim)) %>%
-    summarise(total = n()) %>%
-    ungroup()
-  init <- mutate(init, id = rownames(init))
+    count(names(.)) %>%
+    ungroup() %>%
+    mutate(id = rownames(.))
 
   # create a losers df from the results df
   elim <- data.frame(candidate = character())
