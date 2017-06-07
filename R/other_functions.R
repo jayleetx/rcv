@@ -35,7 +35,7 @@ add_exhausted <- function(results) {
   exhausted[1, ] <- exhausted[1, ] + results["NA", ]
   results["NA", ] <- exhausted[1, ]
   results <- results %>%
-    tibble::rownames_to_column("candidates")
+    tibble::rownames_to_column("candidate")
 
   return(results)
 }
