@@ -25,7 +25,46 @@ make_alluvialdf <- function(image, rcvcontest, results) {
     elim <- rbind(elim, loser)
   }
 
-  #alluvial function cannot have NAs in it, so replace with "NA"
+  init <- init %>% gather(key = rank, value = candidate, 1:(ncol(init)-2))
+  init <- transform(init, rank = as.numeric(rank))
+
+  alluvialdf <- data.frame(matrix(nrow = 0, ncol = ncol(results)))
+  col_names <- c()
+  for (i in 1:(ncol(results) - 1)) {
+    col_names <- append(col_names, paste0("round", i))
+  }
+  colnames(alluvialdf) <- append(col_names, "frequency")
+
+  pathframe <- data.frame(matrix(ncol = ncol(results)))
+  colnames(pathframe) <- colnames(alluvialdf)
+
+  for (j in unique(init$id)) {
+    path <- pathframe
+
+    votepattern <- init %>% filter(id == j)
+
+    for (i in 1:(ncol(pathframe)-1)) {
+
+      tempelim <- data.frame(candidate = character())
+      if (i >= 2) tempelim <- elim[1:(i-1),]
+
+      path[,i] <- votepattern %>%
+        filter(!(candidate %in% tempelim$candidate))
+        filter(rank == min(rank)) %>%
+        select(candidate)
+    }
+
+    path[,ncol(pathframe)] <- votepattern[1,"n"]
+
+    alluvialdf <- rbind(alluvialdf, path)
+  }
+
+  # get final frequencies attempt
+  alluvialdf <- alluvialdf %>%
+    count_(lapply(names(alluvialdf)[-ncol(alluvialdf)], as.name), sort = T) %>%
+    ungroup()
+
+  # alluvial function cannot have NAs in it, so replace with "NA"
   alluvialdf[is.na(alluvialdf)] <- "NA"
 
   return(alluvialdf)
