@@ -14,7 +14,8 @@
 #' character information to match the numeric data in the raw
 #' ballot image with the objects these numeric strings refer to.
 #' Data refers to the 2016 San Francisco Board of Supervisors
-#' elections in Districts 1, 3, 5, 7, 9, and 11.
+#' elections in Districts 1, 3, 5, 7, 9, and 11. All San Francisco
+#' data is to be used with the "WinEDS" format.
 #'
 #' @format A data frame with 644 rows and 1 variable
 #' @source \url{http://www.sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt}
@@ -48,7 +49,8 @@
 #'
 #' The .rda version of a .csv from a 2005 Cambridge, MA City Council
 #' multiwinner RCV election. This data is included as an example of
-#' another ballot image format for use with the label function.
+#' another ballot image format for use with the label function. All
+#' Cambridge data is to be used with the "ChoicePlus" format.
 #'
 #' @format A data frame with 17959 rows and 26 variables
 "cambridge_ballot"

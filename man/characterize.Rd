@@ -4,12 +4,17 @@
 \alias{characterize}
 \title{Replaces number string codes in ballot with character strings from lookup}
 \usage{
-characterize(ballot, lookup)
+characterize(ballot, lookup, format)
 }
 \arguments{
 \item{ballot}{The labelled ballot data}
 
 \item{lookup}{The labelled lookup data}
+
+\item{format}{A character string detailing the format. Current
+supported formats are "WinEDS" and "ChoicePlus" (forthcoming), based on
+common types of software used. Contact creators with suggestions for
+more formats.}
 }
 \value{
 The ballot data, but now "readable" so votes can be understood
@@ -21,5 +26,6 @@ Matches codes in the `contest_id`, `tally_type_id`, `precinct_id`, and
 character values from the `description` column in the lookup.
 }
 \examples{
-characterize(ballot = sf_ballot_labelled, lookup = sf_lookup_labelled)
+characterize(ballot = sf_ballot_labelled, lookup = sf_lookup_labelled,
+format = "WinEDS")
 }

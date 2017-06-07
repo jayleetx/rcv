@@ -11,6 +11,7 @@ cambridge_ballot
 \description{
 The .rda version of a .csv from a 2005 Cambridge, MA City Council
 multiwinner RCV election. This data is included as an example of
-another ballot image format for use with the label function.
+another ballot image format for use with the label function. All
+Cambridge data is to be used with the "ChoicePlus" format.
 }
 \keyword{datasets}

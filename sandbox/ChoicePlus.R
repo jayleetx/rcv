@@ -1,17 +1,14 @@
-#read
-data <- readr::read_csv(path,
+# read
+read <- function(path) {
+  readr::read_csv(path,
                  col_names = paste0("V",
                                     seq_len(max(count.fields(path,
                                                              sep = ',')))))
-
-#label
-a <- data %>%
-  tidyr::separate(V1, into = c("a",
-                               "ward",
-                               "precinct",
-                               "b",
-                               "unique"),
-                  sep = c(2,4,6,10),
+}
+# label
+label <- function(data) { x <- data %>%
+  tidyr::separate(V1, into = c("a","ward","precinct","b"),
+                  sep = c(2,4,6),
                   remove = T) %>%
   select(-a, -b) %>%
   tidyr::separate(V4, into = c("a", "1"),
@@ -22,21 +19,28 @@ a <- data %>%
                sep = ", ") %>%
   dplyr::mutate(`1` = replace(`1`, which(`1` == ""), NA))
 
-colnames(a) <- c("ward","precinct", "unique", "style", "contest",
-                 as.character(c(1:(ncol(a)-5))))
-tall <- a %>%
+colnames(x) <- c("ward","precinct", "style", "contest",
+                 as.character(c(1:(ncol(x)-4))))
+tall <- x %>%
+  tibble::rownames_to_column("pref_voter_id") %>%
   tidyr::gather(key = vote_rank,
                 value = candidate_id,
-                c(6:(ncol(a))),
+                c(6:(ncol(x)+1)),
                 na.rm = T) %>%
-  dplyr::arrange(ward, precinct, unique) %>%
   dplyr::mutate(candidate_id = stringr::str_replace_all(candidate_id,
                                                         "\\[[0-9]{1,2}\\]",
-                                                        ""))
-#  tidyr::separate(candidate_id,
-#                  into = c("candidate_id", "a"),
-#                  sep = "\\[",
-#                  extra = "merge",
-#                  remove = T) %>%
-  select(-a)
+                                                        ""),
+                pref_voter_id = as.integer(pref_voter_id)) %>%
+  dplyr::arrange(pref_voter_id, vote_rank)
 return(tall)
+}
+
+# label image
+
+label <- function(data) {
+  data %>%
+    dplyr::filter(V1 == "20") %>%
+    dplyr::select(V2,V3) %>%
+    dplyr::rename(id = V2,
+                  description = V3)
+}

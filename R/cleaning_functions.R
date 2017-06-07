@@ -60,9 +60,34 @@ label <- function(data, image, format) {
   }
 
   else if(image == "ballot" & format == "ChoicePlus") {
-    data
+    x <- data %>%
+      tidyr::separate(V1, into = c("a","ward","precinct","b"),
+                      sep = c(2,4,6),
+                      remove = T) %>%
+      dplyr::select(-a, -b) %>%
+      tidyr::separate(V4, into = c("a", "1"),
+                      sep = 3,
+                      remove = T) %>%
+      tidyr::unite(col = "contest",
+                   V3, a,
+                   sep = ", ") %>%
+      dplyr::mutate(`1` = replace(`1`, which(`1` == ""), NA))
+
+    colnames(x) <- c("ward","precinct", "style", "contest",
+                     as.character(c(1:(ncol(x)-4))))
+    tall <- x %>%
+      tibble::rownames_to_column("pref_voter_id") %>%
+      tidyr::gather(key = vote_rank,
+                    value = candidate_id,
+                    c(6:(ncol(x)+1)),
+                    na.rm = T) %>%
+      dplyr::mutate(candidate_id = stringr::str_replace_all(candidate_id,
+                                                            "\\[[0-9]{1,2}\\]",
+                                                            ""),
+                    pref_voter_id = as.integer(pref_voter_id)) %>%
+      dplyr::arrange(pref_voter_id, vote_rank)
+    return(tall)
   }
-# Hey Jay write this part later
 
   else if (image == "lookup" & format == "WinEDS") {
     data %>%
@@ -79,7 +104,11 @@ label <- function(data, image, format) {
   }
 
   else if (image == "lookup" & format == "ChoicePlus") {
-    data
+    data %>%
+      dplyr::filter(V1 == "20") %>%
+      dplyr::select(V2,V3) %>%
+      dplyr::rename(id = V2,
+                    description = V3)
   }
 
   else stop('incompatible ballot format')
@@ -95,11 +124,17 @@ label <- function(data, image, format) {
 #'
 #' @param ballot The labelled ballot data
 #' @param lookup The labelled lookup data
+#' @param format A character string detailing the format. Current
+#' supported formats are "WinEDS" and "ChoicePlus" (forthcoming), based on
+#' common types of software used. Contact creators with suggestions for
+#' more formats.
 #' @return The ballot data, but now "readable" so votes can be understood
 #' @examples
-#' characterize(ballot = sf_ballot_labelled, lookup = sf_lookup_labelled)
+#' characterize(ballot = sf_ballot_labelled, lookup = sf_lookup_labelled,
+#' format = "WinEDS")
 #' @export
-characterize <- function(ballot, lookup) {
+characterize <- function(ballot, lookup, format) {
+  if (format == "WinEDS") {
   candidates <- lookup %>%
     dplyr::filter(record_type == "Candidate") %>%
     dplyr::select(id, description) %>%
@@ -133,6 +168,12 @@ characterize <- function(ballot, lookup) {
            under_vote)
   }
 
+  else if (format == "ChoicePlus") {
+    dplyr::left_join(ballot, lookup, by = c("candidate_id" = "id")) %>%
+      dplyr::select(-candidate_id)
+  }
+}
+
 #' Master one-step cleaning function
 #'
 #' Wraps `import_data`, `label`, and `characterize` to clean the ballot
@@ -156,5 +197,5 @@ clean_ballot <- function(ballot, b_header, lookup, l_header, format) {
     label(image = "ballot", format = format)
   b <- import_data(data = lookup, header = l_header) %>%
     label(image = "lookup", format = format)
-  characterize(ballot = a, lookup = b)
+  characterize(ballot = a, lookup = b, format = format)
 }
