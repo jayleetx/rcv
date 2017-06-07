@@ -60,9 +60,11 @@ make_alluvialdf <- function(image, rcvcontest, results) {
   }
 
   # get final frequencies attempt
+
+  names <- lapply(names(alluvialdf)[-ncol(alluvialdf)], as.name)
   alluvialdf <- alluvialdf %>%
-    count_(lapply(names(alluvialdf)[-ncol(alluvialdf)], as.name), wt = frequency, sort = T) %>%
-    ungroup()
+    group_by_(.dots = names) %>%
+    summarise(frequency = sum(frequency))
 
   # alluvial function cannot have NAs in it, so replace with "NA"
   alluvialdf[is.na(alluvialdf)] <- "NA"
