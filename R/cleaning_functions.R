@@ -223,6 +223,6 @@ clean_mn <- function(data) {
                                      NA, candidate)) %>%
     dplyr::mutate(pref_voter_id = as.numeric(pref_voter_id),
                   vote_rank = as.numeric(vote_rank)) %>%
-    arrange(pref_voter_id)
+    dplyr::arrange(pref_voter_id)
 
 }
