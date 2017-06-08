@@ -30,8 +30,8 @@ add_exhausted <- function(results) {
   row.names(exhausted) <- c("Exhausted")
   for (i in 1:ncol(results)) {
     exhausted[1, i] <- total - sum(results[, i], na.rm = T)
+    exhausted[1, i] <- sum(exhausted[1, i], results["NA", i], na.rm = T)
   }
-  exhausted[1, ] <- exhausted[1, ] + results["NA", ]
   results["NA", ] <- exhausted[1, ]
   results <- results %>%
     tibble::rownames_to_column("candidate")
