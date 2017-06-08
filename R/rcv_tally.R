@@ -49,6 +49,9 @@ rcv_tally <- function(image, rcvcontest) {
     ballot <- ballot %>%
       dplyr::filter(!(candidate %in% elim$candidate))
 
+    candidates <- data.frame(unique(ballot$candidate)) %>%
+      transmute(candidate = as.character(unique.ballot.candidate.))
+
     round <- ballot %>%
       dplyr::filter(pref_voter_id %in% transfers$pref_voter_id) %>%
       dplyr::group_by(pref_voter_id) %>%
@@ -57,15 +60,17 @@ rcv_tally <- function(image, rcvcontest) {
       dplyr::group_by(candidate) %>%
       dplyr::summarise(total = n()) %>%
       data.frame() %>%
-      dplyr::right_join(data.frame(unique(ballot$candidate)),
-                 by = c("candidate" = "unique.ballot.candidate.")) %>%
+      dplyr::right_join(candidates,
+                 by = c("candidate")) %>%
         dplyr::mutate(total = ifelse(is.na(total), 0, total))
 
     row.names(round) <- round$candidate
 
     for (i in unique(round$candidate)) {
-      if (j >= 2 & a != 1) {
-        round[i, 2] <- (results[i, j-1] + round[i, 2])
+      if (j >= 2) {
+        if (a != 1) {
+          round[i, 2] <- (results[i, j-1] + round[i, 2])
+        }
       }
 
       results [i, j] <- round[i, 2]
