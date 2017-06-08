@@ -12,6 +12,7 @@
 #' import_data("http://www.sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt",
 #'  header = FALSE)
 #' @export
+
 import_data <- function(data, header) {
   if ("data.frame" %in% class(data)) {
     data
@@ -84,7 +85,8 @@ label <- function(data, image, format) {
       dplyr::mutate(candidate_id = stringr::str_replace_all(candidate_id,
                                                             "\\[[0-9]{1,2}\\]",
                                                             ""),
-                    pref_voter_id = as.integer(pref_voter_id)) %>%
+                    pref_voter_id = as.integer(pref_voter_id),
+                    vote_rank = as.integer(vote_rank)) %>%
       dplyr::arrange(pref_voter_id, vote_rank)
     return(tall)
   }
@@ -133,6 +135,7 @@ label <- function(data, image, format) {
 #' characterize(ballot = sf_ballot_labelled, lookup = sf_lookup_labelled,
 #' format = "WinEDS")
 #' @export
+
 characterize <- function(ballot, lookup, format) {
   if (format == "WinEDS") {
   candidates <- lookup %>%
@@ -199,4 +202,27 @@ clean_ballot <- function(ballot, b_header, lookup, l_header, format) {
   b <- import_data(data = lookup, header = l_header) %>%
     label(image = "lookup", format = format)
   characterize(ballot = a, lookup = b, format = format)
+}
+
+#' Function for cleaning Minneapolis RCV data
+#'
+#' The Minneapolis data comes in a different form than SF or Cambridge data.
+#' This function optimizes the process for formatting this data.
+#' @param data The raw RCV data
+#' @return The data formatted for use with rcv_tally
+#' @examples clean_mn(minneapolis_mayor_2013)
+#' @export
+
+clean_mn <- function(data) {
+  colnames(data) <- c("precinct", "1", "2", "3", "count")
+  a <- data %>%
+    dplyr::select(1:4) %>%
+    tibble::rownames_to_column("pref_voter_id") %>%
+    tidyr::gather(key = vote_rank, value = candidate, `1`, `2`, `3`) %>%
+    dplyr::mutate(candidate = ifelse(candidate %in% c("undervote", "overvote"),
+                                     NA, candidate)) %>%
+    dplyr::mutate(pref_voter_id = as.numeric(pref_voter_id),
+                  vote_rank = as.numeric(vote_rank)) %>%
+    arrange(pref_voter_id)
+
 }
