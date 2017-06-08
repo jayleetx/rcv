@@ -50,7 +50,7 @@ rcv_tally <- function(image, rcvcontest) {
       dplyr::filter(!(candidate %in% elim$candidate))
 
     candidates <- data.frame(unique(ballot$candidate)) %>%
-      transmute(candidate = as.character(unique.ballot.candidate.))
+      dplyr::transmute(candidate = as.character(unique.ballot.candidate.))
 
     round <- ballot %>%
       dplyr::filter(pref_voter_id %in% transfers$pref_voter_id) %>%
