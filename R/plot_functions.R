@@ -5,12 +5,16 @@
 #' @return A dataframe that counts how many ballots follow each unique "path"
 #' of candidates through the election rounds
 #' @examples
-#' make_alluvialdf(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 1")
+#' make_alluvialdf(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
 #' @export
 
 make_alluvialdf <- function(image, rcvcontest) {
   # create df of all voting combinations in election
-  init <- readable(image) %>%
+  init <- readable(image)
+  if (length(unique(init$contest)) > 1) {
+    init <- init %>% dplyr::filter(contest == rcvcontest)
+  }
+  init <- init %>%
     dplyr::filter(contest == rcvcontest) %>%
     dplyr::select(3:ncol(.)) %>%
     dplyr::count_(lapply(names(.), as.name), sort = T) %>%
