@@ -10,11 +10,16 @@ rcv_tally <- function(image, rcvcontest) {
   ballot <- image %>%
     dplyr::filter(contest == rcvcontest,
                   stringr::str_detect(candidate, "=") %in% c(F, NA)) %>%
-    dplyr::mutate(candidate = ifelse(is.na(candidate), "NA", candidate)) %>%
-    dplyr::select(pref_voter_id, vote_rank, candidate)
+    dplyr::mutate(candidate = ifelse(is.na(candidate),
+                                     "NA",
+                                     candidate)) %>%
+    dplyr::select(pref_voter_id,
+                  vote_rank,
+                  candidate)
 
   n.cand <- length(unique(ballot$candidate))
-  results <- data.frame(matrix(rep(NA, n.cand*(n.cand-2)), nrow = n.cand))
+  results <- data.frame(matrix(rep(NA, n.cand*(n.cand-2)),
+                               nrow = n.cand))
   roundnames <- c()
   for (i in 1:(n.cand - 2)) {
     roundnames <- append(roundnames, paste0("round", i))
@@ -27,7 +32,8 @@ rcv_tally <- function(image, rcvcontest) {
   for (j in 1:(n.cand - 2)) {
     if (j >= 2) {
       transfers <- ballot %>%
-        dplyr::filter(vote_rank == min(vote_rank), candidate %in% loser) %>%
+        dplyr::filter(vote_rank == min(vote_rank),
+                      candidate %in% loser) %>%
         dplyr::select(pref_voter_id)
     } else transfers <- ballot %>% dplyr::select(pref_voter_id)
 
@@ -41,7 +47,13 @@ rcv_tally <- function(image, rcvcontest) {
       dplyr::ungroup() %>%
       dplyr::group_by(candidate) %>%
       dplyr::summarise(total = n()) %>%
-      data.frame()
+      data.frame() %>%
+      dplyr::right_join(data.frame(unique(ballot$candidate)),
+                 by = c("candidate" = "unique.ballot.candidate."))
+    if (j == 1) {
+      round <- round %>%
+        dplyr::mutate(total = ifelse(is.na(total), 0, total))
+    }
 
     row.names(round) <- round$candidate
 
