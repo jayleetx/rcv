@@ -9,7 +9,8 @@ rcv_tally(image, rcvcontest)
 \arguments{
 \item{image}{A dataframe containing rcv election data}
 
-\item{rcvcontest}{The election to calculate results for}
+\item{rcvcontest}{(optional) The election to calculate results for. If the image
+contains more than one unique contest, this must be supplied.}
 }
 \value{
 A dataframe that contains vote tallies
@@ -18,5 +19,5 @@ A dataframe that contains vote tallies
 Determines RCV round results in a dataframe
 }
 \examples{
-rcv_tally(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 1")
+rcv_tally(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
 }

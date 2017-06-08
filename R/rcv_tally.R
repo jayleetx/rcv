@@ -1,15 +1,18 @@
 #' Determines RCV round results in a dataframe
 #'
 #' @param image A dataframe containing rcv election data
-#' @param rcvcontest The election to calculate results for
+#' @param rcvcontest (optional) The election to calculate results for. If the image
+#' contains more than one unique contest, this must be supplied.
 #' @return A dataframe that contains vote tallies
 #' @examples
-#' rcv_tally(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 1")
+#' rcv_tally(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
 #' @export
 rcv_tally <- function(image, rcvcontest) {
+  if (length(unique(image$contest)) > 1) {
+    image <- image %>% dplyr::filter(contest == rcvcontest)
+  }
   ballot <- image %>%
-    dplyr::filter(contest == rcvcontest,
-                  stringr::str_detect(candidate, "=") %in% c(F, NA)) %>%
+    dplyr::filter(stringr::str_detect(candidate, "=") %in% c(F, NA)) %>%
     dplyr::mutate(candidate = ifelse(is.na(candidate),
                                      "NA",
                                      candidate)) %>%
@@ -35,7 +38,13 @@ rcv_tally <- function(image, rcvcontest) {
         dplyr::filter(vote_rank == min(vote_rank),
                       candidate %in% loser) %>%
         dplyr::select(pref_voter_id)
+      a <- 0
     } else transfers <- ballot %>% dplyr::select(pref_voter_id)
+
+    if (nrow(transfers) == 0) {
+      transfers <- ballot %>% dplyr::select(pref_voter_id)
+      a <- 1
+    }
 
     ballot <- ballot %>%
       dplyr::filter(!(candidate %in% elim$candidate))
@@ -49,16 +58,13 @@ rcv_tally <- function(image, rcvcontest) {
       dplyr::summarise(total = n()) %>%
       data.frame() %>%
       dplyr::right_join(data.frame(unique(ballot$candidate)),
-                 by = c("candidate" = "unique.ballot.candidate."))
-    if (j == 1) {
-      round <- round %>%
+                 by = c("candidate" = "unique.ballot.candidate.")) %>%
         dplyr::mutate(total = ifelse(is.na(total), 0, total))
-    }
 
     row.names(round) <- round$candidate
 
     for (i in unique(round$candidate)) {
-      if (j >= 2) {
+      if (j >= 2 & a != 1) {
         round[i, 2] <- (results[i, j-1] + round[i, 2])
       }
 
@@ -74,11 +80,10 @@ rcv_tally <- function(image, rcvcontest) {
     elim <- rbind(elim, loser)
   }
 
-  results <- results %>%
+  results %>%
     tibble::rownames_to_column("candidate") %>%
     dplyr::arrange(candidate == "NA", rowSums(is.na(.)), desc(.[ ,ncol(.)])) %>%
     tibble::column_to_rownames("candidate") %>%
     add_exhausted()
 
-  return(results)
 }
