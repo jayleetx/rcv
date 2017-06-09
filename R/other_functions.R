@@ -45,7 +45,7 @@ elected <- function(results, n = 1) {
 #' @export
 
 approval <- function(results, image, rcvcontest, n = 1) {
-  voters <- approved <- NULL
+  voters <- approved <- contest <- candidate <- pref_voter_id <- NULL
   if (length(unique(image$contest)) > 1) {
     image <- image %>% dplyr::filter(contest == rcvcontest)
   }
