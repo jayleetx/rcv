@@ -52,6 +52,6 @@ approval <- function(results, image, rcvcontest, n = 1) {
   voters <- readable(image)
   approved <- image %>%
     dplyr::filter(candidate %in% elected(results, n)) %>%
-    count(pref_voter_id)
+    dplyr::count(pref_voter_id)
   nrow(approved) / nrow(voters)
 }
