@@ -11,7 +11,7 @@
 rcv_tally <- function(image, rcvcontest) {
   contest <- candidate <- pref_voter_id <- vote_rank <- n <- total <- NULL
   unique.ballot.candidate. <- . <- NULL
-  if (length(unique(image$contest)) > 1) {
+  if (!(missing(rcvcontest))) {
     image <- image %>% dplyr::filter(contest == rcvcontest)
   }
   ballot <- image %>%
@@ -94,6 +94,7 @@ rcv_tally <- function(image, rcvcontest) {
                    rowSums(is.na(.)),
                    dplyr::desc(.[ ,ncol(.)])) %>%
     tibble::column_to_rownames("candidate") %>%
+    dplyr::select(which(as.vector(colSums(is.na(.)) < (nrow(.) - 1)))) %>%
     add_exhausted()
 
 }
