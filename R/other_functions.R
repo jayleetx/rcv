@@ -25,7 +25,7 @@ readable <- function(clean) {
 #' @export
 
 elected <- function(results, n = 1) {
-  results[1:n,1]
+  results[1:n, 1]
 }
 
 
