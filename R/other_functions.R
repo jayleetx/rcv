@@ -15,27 +15,14 @@ readable <- function(clean) {
     tidyr::spread(key = vote_rank, value = candidate)
 }
 
-# Added line for travis build check
 
-
-#' Adds correct exhausted numbers for a `rcv_tally` dataframe
+#' Summarizes which candidates were elected from the results tally
 #'
-#' @param results A dataframe that comes from `rcv_tally()`
-#' @return The results dataframe with correct counts for the exhausted votes
+#' @param results the results tabulated from the election in question
+#' @param n the number of candidates being elected (defaults to 1)
+#' @return a vector of the candidates successfully elected
 #' @export
-add_exhausted <- function(results) {
 
-  total <- sum(results[, 1], na.rm = T)
-  exhausted <- data.frame(matrix(rep(NA, ncol(results)), nrow = 1))
-  colnames(exhausted) <- colnames(results)
-  row.names(exhausted) <- c("Exhausted")
-  for (i in 1:ncol(results)) {
-    exhausted[1, i] <- total - sum(results[, i], na.rm = T)
-    exhausted[1, i] <- sum(exhausted[1, i], results["NA", i], na.rm = T)
-  }
-  results["NA", ] <- exhausted[1, ]
-  results <- results %>%
-    tibble::rownames_to_column("candidate")
-
-  return(results)
+elected <- function(results, n = 1) {
+  results[1:n,1]
 }
