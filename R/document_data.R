@@ -25,7 +25,11 @@
 #'
 #' A tidied version of `sf_bos_ballot` in a "tall" format,
 #' readable to see voters' information, including candidate
-#' rankings, precinct, and over-/under-vote codings.
+#' rankings, precinct, and over-/under-vote codings. Cleaned
+#' with clean_ballot.
+#' clean_ballot(sf_bos_ballot, b_header = T,
+#'              sf_bos_lookup, l_header = T,
+#'              format = "WinEDS")
 #'
 #' @format A data frame with 643806 rows and 9 variables:
 #' \describe{
@@ -70,7 +74,10 @@
 #'
 #' A tidied version of `cambridge_ballot` in a "tall" format,
 #' readable to see voters' information, including candidate
-#' rankings, ward, and precinct.
+#' rankings, ward, and precinct. Cleaned with clean_ballot.
+#' clean_ballot(cambridge_ballot, b_header = T,
+#'              cambridge_lookup, l_header = T,
+#'              format = "ChoicePlus")
 #'
 #' @format A data frame with 108752 rows and 7 variables:
 #' \describe{
@@ -110,3 +117,13 @@
 #'
 #' @format A data frame with 644 rows and 7 variables
 "sf_lookup_labelled"
+
+#' Tabulated results from a San Francisco RCV election
+#'
+#' Results from the SF "Board of Supervisors, District 7" election
+#' in 2016. Tabulated with rcv_tally.
+#' rcv_tally(image = sf_bos_clean,
+#'           rcvcontest = "Board of Supervisors, District 7")
+#'
+#' @format a data frame with 6 rows and 5 variables
+"sf_7_results"

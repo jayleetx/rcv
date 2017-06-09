@@ -17,3 +17,6 @@ a vector of the candidates successfully elected
 \description{
 Summarizes which candidates were elected from the results tally
 }
+\examples{
+elected(sf_7_results, n = 1)
+}
