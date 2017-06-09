@@ -10,7 +10,7 @@
 #' @export
 rcv_tally <- function(image, rcvcontest) {
   contest <- candidate <- pref_voter_id <- vote_rank <- n <- total <- NULL
-  unique.global.candidate. <- . <- NULL
+  unique.ballot.candidate. <- . <- NULL
   if (length(unique(image$contest)) > 1) {
     image <- image %>% dplyr::filter(contest == rcvcontest)
   }
