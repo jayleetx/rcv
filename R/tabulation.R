@@ -2,7 +2,8 @@
 #'
 #' @param image A dataframe containing rcv election data
 #' @param rcvcontest (optional) The election to calculate results for. If the image
-#' contains more than one unique contest, this must be supplied.
+#' contains more than one unique contest, this must be supplied. In most cases
+#' except for some San Francisco elections, this is unnecessary.
 #' @return A dataframe that contains vote tallies
 #' @examples
 #' rcv_tally(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
@@ -95,4 +96,27 @@ rcv_tally <- function(image, rcvcontest) {
     tibble::column_to_rownames("candidate") %>%
     add_exhausted()
 
+}
+
+
+#' Adds correct exhausted numbers for a `rcv_tally` dataframe
+#'
+#' @param results A dataframe that comes from `rcv_tally()`
+#' @return The results dataframe with correct counts for the exhausted votes
+#' @export
+add_exhausted <- function(results) {
+
+  total <- sum(results[, 1], na.rm = T)
+  exhausted <- data.frame(matrix(rep(NA, ncol(results)), nrow = 1))
+  colnames(exhausted) <- colnames(results)
+  row.names(exhausted) <- c("Exhausted")
+  for (i in 1:ncol(results)) {
+    exhausted[1, i] <- total - sum(results[, i], na.rm = T)
+    exhausted[1, i] <- sum(exhausted[1, i], results["NA", i], na.rm = T)
+  }
+  results["NA", ] <- exhausted[1, ]
+  results <- results %>%
+    tibble::rownames_to_column("candidate")
+
+  return(results)
 }
