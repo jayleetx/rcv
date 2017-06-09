@@ -21,6 +21,9 @@ cambridge_clean
 \description{
 A tidied version of `cambridge_ballot` in a "tall" format,
 readable to see voters' information, including candidate
-rankings, ward, and precinct.
+rankings, ward, and precinct. Cleaned with clean_ballot.
+clean_ballot(cambridge_ballot, b_header = T,
+             cambridge_lookup, l_header = T,
+             format = "ChoicePlus")
 }
 \keyword{datasets}

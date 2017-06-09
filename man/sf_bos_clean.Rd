@@ -26,6 +26,10 @@ sf_bos_clean
 \description{
 A tidied version of `sf_bos_ballot` in a "tall" format,
 readable to see voters' information, including candidate
-rankings, precinct, and over-/under-vote codings.
+rankings, precinct, and over-/under-vote codings. Cleaned
+with clean_ballot.
+clean_ballot(sf_bos_ballot, b_header = T,
+             sf_bos_lookup, l_header = T,
+             format = "WinEDS")
 }
 \keyword{datasets}
