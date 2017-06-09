@@ -44,6 +44,9 @@ import_data <- function(data, header) {
 #' @export
 
 label <- function(data, image, format) {
+  X1 <- tally_type_id <- vote_rank <- V1 <- a <- b <- V4 <- V3 <- NULL
+  `1` <- candidate_id <- pref_voter_id <- record_type <- NULL
+  description <- V2 <- NULL
   if (image == "ballot" & format == "WinEDS") {
     data %>%
       tidyr::separate(X1, into = c("contest_id",
@@ -217,6 +220,7 @@ clean_ballot <- function(ballot, b_header, lookup, l_header, format) {
 #' @export
 
 clean_mn <- function(data) {
+  vote_rank <- candidate <- `1` <- `2` <- `3` <- pref_voter_id <- NULL
   colnames(data) <- c("precinct", "1", "2", "3", "count")
   a <- data %>%
     dplyr::select(1:4) %>%

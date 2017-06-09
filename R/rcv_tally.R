@@ -8,6 +8,8 @@
 #' rcv_tally(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
 #' @export
 rcv_tally <- function(image, rcvcontest) {
+  contest <- candidate <- pref_voter_id <- vote_rank <- n <- total <- NULL
+  unique.global.candidate. <- . <- NULL
   if (length(unique(image$contest)) > 1) {
     image <- image %>% dplyr::filter(contest == rcvcontest)
   }
@@ -87,7 +89,9 @@ rcv_tally <- function(image, rcvcontest) {
 
   results %>%
     tibble::rownames_to_column("candidate") %>%
-    dplyr::arrange(candidate == "NA", rowSums(is.na(.)), desc(.[ ,ncol(.)])) %>%
+    dplyr::arrange(candidate == "NA",
+                   rowSums(is.na(.)),
+                   dplyr::desc(.[ ,ncol(.)])) %>%
     tibble::column_to_rownames("candidate") %>%
     add_exhausted()
 

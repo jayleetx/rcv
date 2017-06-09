@@ -6,6 +6,7 @@
 #' readable(sf_bos_clean)
 #' @export
 readable <- function(clean) {
+  contest <- pref_voter_id <- vote_rank <- candidate <- NULL
   clean %>%
     dplyr::select(contest,
                   pref_voter_id,

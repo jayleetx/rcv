@@ -9,6 +9,7 @@
 #' @export
 
 make_alluvialdf <- function(image, rcvcontest) {
+  contest <- . <- candidate <- id <- frequency <- NULL
   # create df of all voting combinations in election
   init <- readable(image)
   if (length(unique(init$contest)) > 1) {
@@ -77,7 +78,7 @@ make_alluvialdf <- function(image, rcvcontest) {
   alluvialdf <- alluvialdf %>%
     dplyr::group_by_(.dots = names) %>%
     dplyr::summarise(frequency = sum(frequency)) %>%
-    dplyr::arrange(desc(frequency))
+    dplyr::arrange(dplyr::desc(frequency))
 
   # alluvial function cannot have NAs in it, so replace with "NA"
   alluvialdf[is.na(alluvialdf)] <- "NA"
