@@ -23,4 +23,5 @@ Imports:
     readr,
     stringr
 RoxygenNote: 6.0.1
-Suggests: alluvial
+Suggests: alluvial,
+    networkD3
