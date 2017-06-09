@@ -137,6 +137,9 @@ label <- function(data, image, format) {
 #' @export
 
 characterize <- function(ballot, lookup, format) {
+  record_type <- tally <- description <- contest <- pref_voter_id <- NULL
+  serial_number <- id <- precinct <- vote_rank <- candidate <- NULL
+  over_vote <- under_vote <- candidate_id <- NULL
   if (format == "WinEDS") {
   candidates <- lookup %>%
     dplyr::filter(record_type == "Candidate") %>%
