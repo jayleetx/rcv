@@ -89,12 +89,12 @@ rcv_tally <- function(image, rcvcontest) {
   }
 
   results %>%
+    dplyr::select(which(as.vector(colSums(is.na(.)) < (nrow(.) - 1)))) %>%
     tibble::rownames_to_column("candidate") %>%
     dplyr::arrange(candidate == "NA",
                    rowSums(is.na(.)),
                    dplyr::desc(.[ ,ncol(.)])) %>%
     tibble::column_to_rownames("candidate") %>%
-    dplyr::select(which(as.vector(colSums(is.na(.)) < (nrow(.) - 1)))) %>%
     add_exhausted()
 
 }

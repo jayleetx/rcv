@@ -12,7 +12,7 @@ make_alluvialdf <- function(image, rcvcontest) {
   contest <- . <- candidate <- id <- frequency <- NULL
   # create df of all voting combinations in election
   init <- readable(image)
-  if (length(unique(init$contest)) > 1) {
+  if (!(missing(rcvcontest))) {
     init <- init %>% dplyr::filter(contest == rcvcontest)
   }
   init <- init %>%
