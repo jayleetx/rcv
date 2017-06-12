@@ -96,6 +96,7 @@ make_alluvialdf <- function(image, rcvcontest) {
 #' make_d3list(results = sf_7_results)
 #' @export
 make_d3list <- function(results) {
+  count <- . <- candidate <- cand_id <- NULL
 
   names <- results %>%
     tidyr::gather(key = round, value = count, 2:ncol(results)) %>%
