@@ -11,9 +11,10 @@ Ranked Choice Voting — R Package
 -   Read in ballot image and master lookup files
 -   Merge these files to get a "readable" ballot layout
 -   Conduct elections, and view a round-by-round table of results
+-   Visualize the flow of voters with an interactive Sankey diagram
 -   Compatible with `dplyr`/`magrittr` pipe syntax (`%>%`)
 
-You can install the development version of `rcv`:
+You can install the development version of `rcv` here:
 
 ``` r
 devtools::install_github("ds-elections/rcv")
@@ -91,19 +92,19 @@ b <- import_data(data = sf_bos_lookup, header = T) %>%
     label(image = "lookup", format = "WinEDS")
 
 # Merge these two tables
-c <- characterize(ballot = a, lookup = b)
+c <- characterize(ballot = a, lookup = b, format = "WinEDS")
 
 knitr::kable(head(readable(c)))
 ```
 
-| contest                          | pref\_voter\_id | precinct | 1                | 2                | 3                |
-|:---------------------------------|:----------------|:---------|:-----------------|:-----------------|:-----------------|
-| Board of Supervisors, District 1 | 000006603       | Pct 9133 | SANDRA LEE FEWER | NA               | NA               |
-| Board of Supervisors, District 1 | 000006604       | Pct 9133 | MARJAN PHILHOUR  | DAVID LEE        | SAMUEL KWONG     |
-| Board of Supervisors, District 1 | 000006605       | Pct 9133 | DAVID LEE        | RICHIE GREENBERG | BRIAN J. LARKIN  |
-| Board of Supervisors, District 1 | 000006606       | Pct 9133 | MARJAN PHILHOUR  | DAVID LEE        | SANDRA LEE FEWER |
-| Board of Supervisors, District 1 | 000006607       | Pct 9133 | BRIAN J. LARKIN  | ANDY THORNLEY    | JASON JUNGREIS   |
-| Board of Supervisors, District 1 | 000006608       | Pct 9133 | MARJAN PHILHOUR  | NA               | NA               |
+| contest                          | pref\_voter\_id | 1                | 2                | 3                |
+|:---------------------------------|:----------------|:-----------------|:-----------------|:-----------------|
+| Board of Supervisors, District 1 | 000006603       | SANDRA LEE FEWER | NA               | NA               |
+| Board of Supervisors, District 1 | 000006604       | MARJAN PHILHOUR  | DAVID LEE        | SAMUEL KWONG     |
+| Board of Supervisors, District 1 | 000006605       | DAVID LEE        | RICHIE GREENBERG | BRIAN J. LARKIN  |
+| Board of Supervisors, District 1 | 000006606       | MARJAN PHILHOUR  | DAVID LEE        | SANDRA LEE FEWER |
+| Board of Supervisors, District 1 | 000006607       | BRIAN J. LARKIN  | ANDY THORNLEY    | JASON JUNGREIS   |
+| Board of Supervisors, District 1 | 000006608       | MARJAN PHILHOUR  | NA               | NA               |
 
 The `readable()` function takes the clean image, which is formatted for ease in computation, and formats it to be easily read manually.
 
@@ -131,3 +132,38 @@ knitr::kable(results)
 | NA                 |    3499|    3522|    3574|    3626|    3667|    3722|    3799|    3923|    4360|
 
 Sandra Lee Fewer wins in Round 9, with 14,705 votes to Marjan Philhour's 13,126. 4,360 votes were left blank, marked invalid, or exhausted in this election.
+
+#### Visualizing Data
+
+We have two recommended methods of visualizing RCV data. Both utilize a flowchart called a "Sankey diagram" to show the transfer of voters between rounds. We will use each method to visualize the transfer of voters in the San Francisco District 7 Board of Supervisors election, because District 1 has too many crossings to be readable.
+
+Method 1 (preferred because it is interactive, quicker, and more readable) uses the `networkD3` package:
+
+``` r
+d3_7 <- rcv::make_d3list(results = sf_7_results)
+networkD3::sankeyNetwork(Links = d3_7$values, Nodes = d3_7$names,
+                         Source = "source", Target = "target",
+                         Value = "value", NodeID = "candidate", units = "voters",
+                         fontSize = 12, nodeWidth = 20)
+```
+
+![](Sankey.png)
+
+Interactivity is disabled here because the .md format prevents HTML outputs from working, so this is just an image. In practice, the above image is interactive.
+
+Method 2 uses the `alluvial` package (this type of graphic is also called an alluvial diagram):
+
+``` r
+alluvial_7 <- rcv::make_alluvialdf(image = sf_bos_clean,
+                              rcvcontest = "Board of Supervisors, District 7")
+alluvial(
+  alluvial_7[,1:4], 
+  freq = alluvial_7$frequency,
+  col = ifelse(alluvial_7$round4 == "NORMAN YEE", "lightgreen", "gray"),
+  border = "gray",
+  alpha = 0.7,
+  blocks = TRUE
+)
+```
+
+![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)

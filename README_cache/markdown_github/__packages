@@ -1,3 +1,6 @@
 base
 rcv
 dplyr
+networkD3
+alluvial
+bindrcpp
