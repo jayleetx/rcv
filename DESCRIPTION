@@ -1,10 +1,11 @@
 Package: rcv
 Type: Package
 Title: Functions for Ranked Choice Voting Data
-Version: 0.1.0
+Version: 0.2.0
 Authors@R: c(
     person("Jay", "Lee", email = "jaylee@reed.edu", role = c("aut")),
-    person("Matthew", "Yancheff", email = "yanchefm@reed.edu", role = c("aut", "cre")))
+    person("Matthew", "Yancheff", email = "yanchefm@reed.edu", role = c("aut", "cre")),
+    person("Reed College", role = c("cph")))
 Description: A collection of ranked choice voting data and functions to 
     manipulate, run elections with, and visualize this data and others. 
     It can bring in raw data, transform it into a ballot you can read, 
