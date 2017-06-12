@@ -24,4 +24,7 @@ Imports:
     stringr
 RoxygenNote: 6.0.1
 Suggests: alluvial,
-    networkD3
+    networkD3,
+    knitr,
+    rmarkdown
+VignetteBuilder: knitr
