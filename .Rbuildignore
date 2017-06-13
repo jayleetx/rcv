@@ -1,8 +1,11 @@
 ^.*\.Rproj$
 ^\.Rproj\.user$
 ^\.travis\.yml$
-^\README.Rmd$
-^\README_cache$
-^\README_files
-^\sandbox$
-^\cran-comments.md$
+^README\.Rmd$
+^README_cache$
+^README_files$
+^sandbox$
+^cran-comments\.md$
+^\.gitignore$
+^\.Rhistory$
+^\.Rbuildignore$
