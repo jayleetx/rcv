@@ -5,7 +5,9 @@
 #' @return A dataframe that counts how many ballots follow each unique "path"
 #' of candidates through the election rounds
 #' @examples
+#' \dontrun{
 #' make_alluvialdf(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
+#' }
 #' @export
 
 make_alluvialdf <- function(image, rcvcontest) {

@@ -19,5 +19,7 @@ of candidates through the election rounds
 Creates a data frame for use with the alluvial package
 }
 \examples{
+\dontrun{
 make_alluvialdf(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
+}
 }

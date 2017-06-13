@@ -26,6 +26,8 @@ Matches codes in the `contest_id`, `tally_type_id`, `precinct_id`, and
 character values from the `description` column in the lookup.
 }
 \examples{
+\dontrun{
 characterize(ballot = sf_ballot_labelled, lookup = sf_lookup_labelled,
 format = "WinEDS")
+}
 }

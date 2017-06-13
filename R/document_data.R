@@ -102,14 +102,6 @@
 #' @source \url{http://vote.minneapolismn.gov/www/groups/public/@clerk/documents/webcontent/2013-mayor-cvr.xlsx}
 "minneapolis_mayor_2013"
 
-#' Labelled ballot data from San Francisco RCV election
-#'
-#' The .rda version of sf_bos_ballot.rda after the `label()`
-#' function has been applied to it.
-#'
-#' @format A data frame with 643806 rows and 9 variables
-"sf_ballot_labelled"
-
 #' Labelled ballot lookup data from a San Francisco RCV election.
 #'
 #' The .rda version of sf_bos_lookup.rda after the `label()`

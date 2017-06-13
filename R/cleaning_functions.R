@@ -135,8 +135,10 @@ label <- function(data, image, format) {
 #' more formats.
 #' @return The ballot data, but now "readable" so votes can be understood
 #' @examples
+#' \dontrun{
 #' characterize(ballot = sf_ballot_labelled, lookup = sf_lookup_labelled,
 #' format = "WinEDS")
+#' }
 #' @export
 
 characterize <- function(ballot, lookup, format) {
