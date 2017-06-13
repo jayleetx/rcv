@@ -147,23 +147,16 @@ networkD3::sankeyNetwork(Links = d3_7$values, Nodes = d3_7$names,
                          fontSize = 12, nodeWidth = 20)
 ```
 
-![](Sankey.png)
-
-Interactivity is disabled here because the .md format prevents HTML outputs from working, so this is just an image. In practice, the above image is interactive.
-
 Method 2 uses the `alluvial` package (this type of graphic is also called an alluvial diagram):
 
 ``` r
 alluvial_7 <- rcv::make_alluvialdf(image = sf_bos_clean,
-                              rcvcontest = "Board of Supervisors, District 7")
-alluvial(
-  alluvial_7[,1:4], 
-  freq = alluvial_7$frequency,
+                                   rcvcontest = "Board of Supervisors, District 7")
+alluvial::alluvial(
+  alluvial_7[,1:4], freq = alluvial_7$frequency,
   col = ifelse(alluvial_7$round4 == "NORMAN YEE", "lightgreen", "gray"),
-  border = "gray",
-  alpha = 0.7,
-  blocks = TRUE
+  border = "gray", alpha = 0.7, blocks = TRUE
 )
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-7-1.png)
+(Outputs for these are disabled due to HTML/.md conversion issues)

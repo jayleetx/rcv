@@ -28,4 +28,3 @@ Suggests: alluvial,
     networkD3,
     knitr,
     rmarkdown
-VignetteBuilder: knitr
