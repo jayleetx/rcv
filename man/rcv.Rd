@@ -6,10 +6,13 @@
 \alias{rcv-package}
 \title{Package: rcv}
 \description{
-rcv: A package for determining ranked choice election results.
+Functions for ranked choice voting data.
 }
 \details{
-Work in progress package with a few work in progress functions.
+A collection of ranked choice voting data and functions to
+manipulate, run elections with, and visualize this data and others.
+It can bring in raw data, transform it into a ballot you can read,
+and return election results for an RCV contest.
 }
 \section{rcv Functions}{
 
