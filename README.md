@@ -14,7 +14,15 @@ Ranked Choice Voting — R Package
 -   Visualize the flow of voters with an interactive Sankey diagram
 -   Compatible with `dplyr`/`magrittr` pipe syntax (`%>%`)
 
-You can install the development version of `rcv` here:
+**Installation**
+
+We're on [CRAN](https://cran.r-project.org/package=rcv) now! You can install our first release:
+
+``` r
+install.packages("rcv")
+```
+
+Or, you can install the development version of `rcv` here:
 
 ``` r
 devtools::install_github("ds-elections/rcv")
@@ -71,14 +79,14 @@ cleaned <- clean_ballot(ballot = sf_bos_ballot, b_header = T,
 knitr::kable(head(readable(cleaned)))
 ```
 
-| contest                          | pref\_voter\_id | precinct | 1                | 2                | 3                |
-|:---------------------------------|:----------------|:---------|:-----------------|:-----------------|:-----------------|
-| Board of Supervisors, District 1 | 000006603       | Pct 9133 | SANDRA LEE FEWER | NA               | NA               |
-| Board of Supervisors, District 1 | 000006604       | Pct 9133 | MARJAN PHILHOUR  | DAVID LEE        | SAMUEL KWONG     |
-| Board of Supervisors, District 1 | 000006605       | Pct 9133 | DAVID LEE        | RICHIE GREENBERG | BRIAN J. LARKIN  |
-| Board of Supervisors, District 1 | 000006606       | Pct 9133 | MARJAN PHILHOUR  | DAVID LEE        | SANDRA LEE FEWER |
-| Board of Supervisors, District 1 | 000006607       | Pct 9133 | BRIAN J. LARKIN  | ANDY THORNLEY    | JASON JUNGREIS   |
-| Board of Supervisors, District 1 | 000006608       | Pct 9133 | MARJAN PHILHOUR  | NA               | NA               |
+| contest                          | pref\_voter\_id | 1                | 2                | 3                |
+|:---------------------------------|:----------------|:-----------------|:-----------------|:-----------------|
+| Board of Supervisors, District 1 | 000006603       | SANDRA LEE FEWER | NA               | NA               |
+| Board of Supervisors, District 1 | 000006604       | MARJAN PHILHOUR  | DAVID LEE        | SAMUEL KWONG     |
+| Board of Supervisors, District 1 | 000006605       | DAVID LEE        | RICHIE GREENBERG | BRIAN J. LARKIN  |
+| Board of Supervisors, District 1 | 000006606       | MARJAN PHILHOUR  | DAVID LEE        | SANDRA LEE FEWER |
+| Board of Supervisors, District 1 | 000006607       | BRIAN J. LARKIN  | ANDY THORNLEY    | JASON JUNGREIS   |
+| Board of Supervisors, District 1 | 000006608       | MARJAN PHILHOUR  | NA               | NA               |
 
 To access intermediate steps, the following process can be used.
 
@@ -117,8 +125,8 @@ results <- rcv_tally(sf_bos_clean, "Board of Supervisors, District 1")
 knitr::kable(results)
 ```
 
-|                    |  round1|  round2|  round3|  round4|  round5|  round6|  round7|  round8|  round9|
-|--------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
+| candidate          |  round1|  round2|  round3|  round4|  round5|  round6|  round7|  round8|  round9|
+|:-------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|
 | SANDRA LEE FEWER   |   12550|   12689|   12777|   12840|   13029|   13093|   13225|   13354|   14705|
 | MARJAN PHILHOUR    |   11067|   11135|   11247|   11348|   11487|   11680|   11837|   12086|   13126|
 | DAVID LEE          |    3396|    3408|    3488|    3551|    3622|    3857|    3961|    4093|      NA|
@@ -129,7 +137,7 @@ knitr::kable(results)
 | JASON JUNGREIS     |     611|     626|     654|      NA|      NA|      NA|      NA|      NA|      NA|
 | SHERMAN R. D'SILVA |     557|     566|      NA|      NA|      NA|      NA|      NA|      NA|      NA|
 | ANDY THORNLEY      |     359|      NA|      NA|      NA|      NA|      NA|      NA|      NA|      NA|
-| NA                 |    3499|    3522|    3574|    3626|    3667|    3722|    3799|    3923|    4360|
+| NA                 |    3499|    3532|    3630|    3743|    3929|    4096|    4578|    5576|    7278|
 
 Sandra Lee Fewer wins in Round 9, with 14,705 votes to Marjan Philhour's 13,126. 4,360 votes were left blank, marked invalid, or exhausted in this election.
 
@@ -147,6 +155,8 @@ networkD3::sankeyNetwork(Links = d3_7$values, Nodes = d3_7$names,
                          fontSize = 12, nodeWidth = 20)
 ```
 
+![](Sankey.png)
+
 Method 2 uses the `alluvial` package (this type of graphic is also called an alluvial diagram):
 
 ``` r
@@ -159,4 +169,4 @@ alluvial::alluvial(
 )
 ```
 
-(Outputs for these are disabled due to HTML/.md conversion issues)
+![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)

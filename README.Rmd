@@ -23,7 +23,15 @@ __Features__
 * Visualize the flow of voters with an interactive Sankey diagram
 * Compatible with `dplyr`/`magrittr` pipe syntax (`%>%`)
 
-You can install the development version of `rcv` here:
+__Installation__
+
+We're on [CRAN](https://cran.r-project.org/package=rcv) now! You can install our first release:
+
+```{r eval = F}
+install.packages("rcv")
+```
+
+Or, you can install the development version of `rcv` here:
 
 ```{r eval = F}
 devtools::install_github("ds-elections/rcv")
@@ -101,9 +109,11 @@ networkD3::sankeyNetwork(Links = d3_7$values, Nodes = d3_7$names,
 
 ```
 
+![](Sankey.png)
+
 Method 2 uses the `alluvial` package (this type of graphic is also called an alluvial diagram):
 
-```{r eval = F}
+```{r}
 alluvial_7 <- rcv::make_alluvialdf(image = sf_bos_clean,
                                    rcvcontest = "Board of Supervisors, District 7")
 alluvial::alluvial(
@@ -112,5 +122,3 @@ alluvial::alluvial(
   border = "gray", alpha = 0.7, blocks = TRUE
 )
 ```
-
-(Outputs for these are disabled due to HTML/.md conversion issues)
