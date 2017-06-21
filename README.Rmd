@@ -25,7 +25,7 @@ __Features__
 
 __Installation__
 
-We're on [CRAN](https://cran.r-project.org/package=rcv) now! You can install our first release:
+We're on [CRAN](https://cran.r-project.org/package=rcv) now! You can install our first release (0.2.0):
 
 ```{r eval = F}
 install.packages("rcv")
@@ -92,7 +92,7 @@ results <- rcv_tally(sf_bos_clean, "Board of Supervisors, District 1")
 knitr::kable(results)
 ```
 
-Sandra Lee Fewer wins in Round 9, with 14,705 votes to Marjan Philhour's 13,126. 4,360 votes were left blank, marked invalid, or exhausted in this election.
+Sandra Lee Fewer wins in Round 9, with 14,705 votes to Marjan Philhour's 13,126. 3,499 ballots were left blank for this election, and 3,779 were exhausted or marked invalid in this election.
 
 #### Visualizing Data
 

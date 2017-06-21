@@ -16,7 +16,7 @@ Ranked Choice Voting — R Package
 
 **Installation**
 
-We're on [CRAN](https://cran.r-project.org/package=rcv) now! You can install our first release:
+We're on [CRAN](https://cran.r-project.org/package=rcv) now! You can install our first release (0.2.0):
 
 ``` r
 install.packages("rcv")
@@ -139,7 +139,7 @@ knitr::kable(results)
 | ANDY THORNLEY      |     359|      NA|      NA|      NA|      NA|      NA|      NA|      NA|      NA|
 | NA                 |    3499|    3532|    3630|    3743|    3929|    4096|    4578|    5576|    7278|
 
-Sandra Lee Fewer wins in Round 9, with 14,705 votes to Marjan Philhour's 13,126. 4,360 votes were left blank, marked invalid, or exhausted in this election.
+Sandra Lee Fewer wins in Round 9, with 14,705 votes to Marjan Philhour's 13,126. 3,499 ballots were left blank for this election, and 3,779 were exhausted or marked invalid in this election.
 
 #### Visualizing Data
 
