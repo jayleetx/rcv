@@ -1,6 +1,6 @@
 #' Package: rcv
 #'
-#' Functions for ranked choice voting data.
+#' Ranked Choice Voting
 #'
 #' A collection of ranked choice voting data and functions to
 #' manipulate, run elections with, and visualize this data and others.
