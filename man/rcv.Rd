@@ -6,7 +6,7 @@
 \alias{rcv-package}
 \title{Package: rcv}
 \description{
-Functions for ranked choice voting data.
+Ranked Choice Voting
 }
 \details{
 A collection of ranked choice voting data and functions to
