@@ -83,7 +83,7 @@ label <- function(data, image, format) {
       tibble::rownames_to_column("pref_voter_id") %>%
       tidyr::gather(key = vote_rank,
                     value = candidate_id,
-                    c(6:(ncol(x)+1)),
+                    !! 6:(ncol(x)+1),
                     na.rm = T) %>%
       dplyr::mutate(candidate_id = stringr::str_replace_all(candidate_id,
                                                             "\\[[0-9]{1,2}\\]",

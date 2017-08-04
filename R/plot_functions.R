@@ -23,7 +23,7 @@ make_alluvialdf <- function(image, rcvcontest) {
     dplyr::count_(lapply(names(.), as.name), sort = T) %>%
     dplyr::ungroup() %>%
     dplyr::mutate(id = rownames(.)) %>%
-    tidyr::gather(key = rank, value = candidate, 1:(ncol(.)-2)) %>%
+    tidyr::gather(key = rank, value = candidate, !! 1:(ncol(.)-2)) %>%
     dplyr::mutate(rank = as.numeric(rank))
 
   # create a losers df from the results df
@@ -101,7 +101,7 @@ make_d3list <- function(results) {
   count <- . <- candidate <- cand_id <- NULL
 
   names <- results %>%
-    tidyr::gather(key = round, value = count, 2:ncol(results)) %>%
+    tidyr::gather(key = round, value = count, !! 2:ncol(results)) %>%
     dplyr::filter(!is.na(count))
 
   names_id <- names %>%
