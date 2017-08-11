@@ -1,6 +1,5 @@
-## Resubmission 
-This is a resubmission. Changes made:
-* Fixed error for tidyr v0.7.0 release
+## Release Summary
+Package updated to fix ERRORs for tidyr v0.7.0 release.
 
 ## Test environments
 * local OS X install, R 3.4.1
@@ -9,3 +8,6 @@ This is a resubmission. Changes made:
 
 ## R CMD check results
 There were no ERRORs or WARNINGs or NOTEs
+
+## Downstream dependencies
+“There are currently no downstream dependencies for this package”.
