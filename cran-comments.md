@@ -10,4 +10,4 @@ Package updated to fix ERRORs for tidyr v0.7.0 release.
 There were no ERRORs or WARNINGs or NOTEs
 
 ## Downstream dependencies
-“There are currently no downstream dependencies for this package”.
+There are currently no downstream dependencies for this package.
