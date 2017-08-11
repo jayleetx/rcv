@@ -1,6 +1,6 @@
 ## Resubmission 
 This is a resubmission. Changes made:
-* Omitted redundant elements from package title
+* Fixed error for tidyr v0.7.0 release
 
 ## Test environments
 * local OS X install, R 3.4.1
