@@ -16,7 +16,7 @@ Ranked Choice Voting — R Package
 
 **Installation**
 
-We're on [CRAN](https://cran.r-project.org/package=rcv) now! You can install our first release (0.2.0):
+We're on [CRAN](https://cran.r-project.org/package=rcv) now! You can install our latest release ([0.2.1](NEWS.md)):
 
 ``` r
 install.packages("rcv")
@@ -169,4 +169,4 @@ alluvial::alluvial(
 )
 ```
 
-![](README_files/figure-markdown_github/unnamed-chunk-8-1.png)
+![](README_files/figure-markdown_github-ascii_identifiers/unnamed-chunk-8-1.png)
