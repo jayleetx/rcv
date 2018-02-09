@@ -10,7 +10,7 @@
   \item{ward}{which city ward the voter voted in}
   \item{precinct}{which city precinct the voter voted in}
   \item{style}{which ballot style the voter had; different styles list
-  different candidates first on the ballot to remove that advantage}
+  different candidates first on the ballot to remove any advantage}
   \item{contest}{which election this candidate ranking applies to}
   \item{vote_rank}{the rank given to the candidate by the voter}
   \item{candidate}{the chosen candidate for the specified vote rank}
