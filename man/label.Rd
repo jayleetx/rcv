@@ -12,9 +12,9 @@ label(data, image, format)
 \item{image}{Whether the data is a "ballot" or "lookup" image}
 
 \item{format}{A character string detailing the format. Current
-supported formats are "WinEDS" and "ChoicePlus" (forthcoming), based on
-common types of software used. Contact creators with suggestions for
-more formats.}
+supported formats are "WinEDS" (used in San Francisco and Alameda counties)
+and "ChoicePlus" (forthcoming, used in Cambridge, MA), based on common types
+of software used. Contact the creators with suggestions for more formats.}
 }
 \value{
 A data frame with multiple columns

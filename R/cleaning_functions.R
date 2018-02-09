@@ -14,16 +14,25 @@
 #' @export
 
 import_data <- function(data, header) {
-  if ("data.frame" %in% class(data)) {
-    data
+  if ("data.frame" %in% class(data)) data
+
+  else if (class(data) == "character") {
+# bay area, txt
+    if (tools::file_ext(data) == "txt") {
+      readr::read_tsv(data, col_names = header)
+    }
+# cambridge, csv
+    else if (tools::file_ext(data) == "csv") {
+      readr::read_csv(data, col_names = header)
+    }
+# minneapolis, excel
+    else if (tools::file_ext(data) %in% c("xls", "xlsx")) {
+      readxl::read_excel(data, col_names = header)
+    }
+
+    else stop('incompatible data format')
   }
-  else if (tools::file_ext(data) == "txt") {
-    readr::read_tsv(data, col_names = header)
-  }
-  else if (tools::file_ext(data) == "csv") {
-    readr::read_csv(data, col_names = header)
-  }
-  else stop('incompatible data format')
+  else stop('file name must be a character string (in quotes)')
 }
 
 
@@ -35,18 +44,21 @@ import_data <- function(data, header) {
 #' @param data A data frame with a single column
 #' @param image Whether the data is a "ballot" or "lookup" image
 #' @param format A character string detailing the format. Current
-#' supported formats are "WinEDS" and "ChoicePlus" (forthcoming), based on
-#' common types of software used. Contact creators with suggestions for
-#' more formats.
+#' supported formats are "WinEDS" (used in San Francisco and Alameda counties)
+#' and "ChoicePlus" (forthcoming, used in Cambridge, MA), based on common types
+#' of software used. Contact the creators with suggestions for more formats.
 #' @return A data frame with multiple columns
 #' @examples
 #' label(data = sf_bos_ballot, image = "ballot", format = "WinEDS")
 #' @export
 
 label <- function(data, image, format) {
+# initialize empty variables
   X1 <- tally_type_id <- vote_rank <- V1 <- a <- b <- V4 <- V3 <- NULL
   `1` <- candidate_id <- pref_voter_id <- record_type <- NULL
   description <- V2 <- NULL
+
+# bay area
   if (image == "ballot" & format == "WinEDS") {
     data %>%
       tidyr::separate(X1, into = c("contest_id",
@@ -63,6 +75,7 @@ label <- function(data, image, format) {
                     vote_rank = as.integer(vote_rank))
   }
 
+# cambridge
   else if(image == "ballot" & format == "ChoicePlus") {
     x <- data %>%
       tidyr::separate(V1, into = c("a","ward","precinct","b"),
@@ -86,7 +99,7 @@ label <- function(data, image, format) {
                     !! 6:(ncol(x)+1),
                     na.rm = T) %>%
       dplyr::mutate(candidate_id = stringr::str_replace_all(candidate_id,
-                                                            "\\[[0-9]{1,2}\\]",
+                                                            "\\[\\d{1,2}\\]",
                                                             ""),
                     pref_voter_id = as.integer(pref_voter_id),
                     vote_rank = as.integer(vote_rank)) %>%
@@ -110,7 +123,7 @@ label <- function(data, image, format) {
 
   else if (image == "lookup" & format == "ChoicePlus") {
     data %>%
-      dplyr::filter(V1 == "20") %>%
+      dplyr::filter(V1 == 20) %>%
       dplyr::select(V2,V3) %>%
       dplyr::rename(id = V2,
                     candidate = V3)
