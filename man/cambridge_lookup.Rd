@@ -9,7 +9,7 @@
 cambridge_lookup
 }
 \description{
-The .rda version of a .csv from a 2005 Cambridge, MA City Council
+The .rda version of a .csv from a 2015 Cambridge, MA City Council
 multiwinner RCV election. This data is included as an example of another
 master lookup format for use with the label function. This data includes
 information other than the candidate names and codes, but we only use the

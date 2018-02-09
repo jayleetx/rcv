@@ -51,7 +51,7 @@
 
 #' Raw ballot image data from a Cambridge, MA RCV election
 #'
-#' The .rda version of a .csv from a 2005 Cambridge, MA City Council
+#' The .rda version of a .csv from a 2015 Cambridge, MA City Council
 #' multiwinner RCV election. This data is included as an example of
 #' another ballot image format for use with the label function. All
 #' Cambridge data is to be used with the "ChoicePlus" format.
@@ -61,7 +61,7 @@
 
 #' Raw lookup data from a Cambridge, MA RCV election
 #'
-#' The .rda version of a .csv from a 2005 Cambridge, MA City Council
+#' The .rda version of a .csv from a 2015 Cambridge, MA City Council
 #' multiwinner RCV election. This data is included as an example of another
 #' master lookup format for use with the label function. This data includes
 #' information other than the candidate names and codes, but we only use the
