@@ -4,14 +4,23 @@
 \alias{rcv_tally}
 \title{Determines RCV round results in a dataframe}
 \usage{
-rcv_tally(image, rcvcontest)
+rcv_tally(image, rules = c("rcv", "stv"), n_winners = 1, rcvcontest)
 }
 \arguments{
 \item{image}{A dataframe containing rcv election data}
 
-\item{rcvcontest}{(optional) The election to calculate results for. If the image
-contains more than one unique contest, this must be supplied. In most cases
-except for some San Francisco elections, this is unnecessary.}
+\item{rules}{Currently, either "rcv" (one winner, ranked-choice voting) or
+"stv" (multiwinner, single transferable vote). Later, options will be
+available for specific cities' implementations of the STV algorithm.
+Currently the Droop quota is used for STV, with surplus votes selected
+randomly for further allocation.}
+
+\item{n_winners}{default 1. In a multi-winner election (STV), the number
+of candidates to be elected.}
+
+\item{rcvcontest}{(optional) The election to calculate results for. If the
+image contains more than one unique contest, this must be supplied. In most
+cases except for some San Francisco elections, this is unnecessary.}
 }
 \value{
 A dataframe that contains vote tallies
@@ -20,5 +29,6 @@ A dataframe that contains vote tallies
 Determines RCV round results in a dataframe
 }
 \examples{
-rcv_tally(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
+rcv_tally(sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
+rcv_tally(cambridge_clean, n_winner = )
 }

@@ -1,14 +1,22 @@
 #' Determines RCV round results in a dataframe
 #'
 #' @param image A dataframe containing rcv election data
-#' @param rcvcontest (optional) The election to calculate results for. If the image
-#' contains more than one unique contest, this must be supplied. In most cases
-#' except for some San Francisco elections, this is unnecessary.
+#' @param rules Currently, either "rcv" (one winner, ranked-choice voting) or
+#' "stv" (multiwinner, single transferable vote). Later, options will be
+#' available for specific cities' implementations of the STV algorithm.
+#' Currently the Droop quota is used for STV, with surplus votes selected
+#' randomly for further allocation.
+#' @param n_winners default 1. In a multi-winner election (STV), the number
+#' of candidates to be elected.
+#' @param rcvcontest (optional) The election to calculate results for. If the
+#' image contains more than one unique contest, this must be supplied. In most
+#' cases except for some San Francisco elections, this is unnecessary.
 #' @return A dataframe that contains vote tallies
 #' @examples
-#' rcv_tally(image = sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
+#' rcv_tally(sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
+#' rcv_tally(cambridge_clean, n_winner = )
 #' @export
-rcv_tally <- function(image, rcvcontest) {
+rcv_tally <- function(image, rules = c('rcv','stv'), n_winners = 1, rcvcontest) {
   contest <- candidate <- pref_voter_id <- vote_rank <- n <- total <- NULL
   unique.ballot.candidate. <- . <- NULL
   if (!(missing(rcvcontest))) {
@@ -23,19 +31,20 @@ rcv_tally <- function(image, rcvcontest) {
                   vote_rank,
                   candidate)
 
-  n.cand <- length(unique(ballot$candidate))
-  results <- data.frame(matrix(rep(NA, n.cand*(n.cand-2)),
-                               nrow = n.cand))
-  roundnames <- c()
-  for (i in 1:(n.cand - 2)) {
-    roundnames <- append(roundnames, paste0("round", i))
+  n_cand <- length(unique(ballot$candidate))
+  n_round <- n_cand - 1 - n_winners
+  results <- data.frame(matrix(rep(NA, n_cand*n_round),
+                               nrow = n_cand))
+  roundnames <- rep(NA, n_round)
+  for (i in 1:n_round) {
+    roundnames[i] <- paste0("round", i)
   }
   colnames(results) <- roundnames
   row.names(results) <- unique(ballot$candidate)
 
   elim <- data.frame(candidate = character())
 
-  for (j in 1:(n.cand - 2)) {
+  for (j in 1:n_round) {
     if (j >= 2) {
       transfers <- ballot %>%
         dplyr::filter(vote_rank == min(vote_rank),
