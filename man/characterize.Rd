@@ -12,7 +12,7 @@ characterize(ballot, lookup, format)
 \item{lookup}{The labelled lookup data}
 
 \item{format}{A character string detailing the format. Current
-supported formats are "WinEDS" and "ChoicePlus" (forthcoming), based on
+supported formats are "WinEDS" and "ChoicePlus" (in progress), based on
 common types of software used. Contact creators with suggestions for
 more formats.}
 }

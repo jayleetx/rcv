@@ -45,7 +45,7 @@ import_data <- function(data, header) {
 #' @param image Whether the data is a "ballot" or "lookup" image
 #' @param format A character string detailing the format. Current
 #' supported formats are "WinEDS" (used in San Francisco and Alameda counties)
-#' and "ChoicePlus" (forthcoming, used in Cambridge, MA), based on common types
+#' and "ChoicePlus" (in progress, used in Cambridge, MA), based on common types
 #' of software used. Contact the creators with suggestions for more formats.
 #' @return A data frame with multiple columns
 #' @examples
@@ -143,7 +143,7 @@ label <- function(data, image, format) {
 #' @param ballot The labelled ballot data
 #' @param lookup The labelled lookup data
 #' @param format A character string detailing the format. Current
-#' supported formats are "WinEDS" and "ChoicePlus" (forthcoming), based on
+#' supported formats are "WinEDS" and "ChoicePlus" (in progress), based on
 #' common types of software used. Contact creators with suggestions for
 #' more formats.
 #' @return The ballot data, but now "readable" so votes can be understood
@@ -209,7 +209,7 @@ characterize <- function(ballot, lookup, format) {
 #' @param lookup The raw lookup image
 #' @param l_header Whether the lookup image has a header line or not
 #' @param format A character string detailing the format. Current
-#' supported formats are "WinEDS" and "ChoicePlus" (forthcoming), based on
+#' supported formats are "WinEDS" and "ChoicePlus" (in progress), based on
 #' common types of software used. Contact creators with suggestions for
 #' more formats.
 #' @return The ballot data, but now "readable" so votes can be understood

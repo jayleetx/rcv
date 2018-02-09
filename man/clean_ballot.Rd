@@ -16,7 +16,7 @@ clean_ballot(ballot, b_header, lookup, l_header, format)
 \item{l_header}{Whether the lookup image has a header line or not}
 
 \item{format}{A character string detailing the format. Current
-supported formats are "WinEDS" and "ChoicePlus" (forthcoming), based on
+supported formats are "WinEDS" and "ChoicePlus" (in progress), based on
 common types of software used. Contact creators with suggestions for
 more formats.}
 }

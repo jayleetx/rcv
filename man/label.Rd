@@ -13,7 +13,7 @@ label(data, image, format)
 
 \item{format}{A character string detailing the format. Current
 supported formats are "WinEDS" (used in San Francisco and Alameda counties)
-and "ChoicePlus" (forthcoming, used in Cambridge, MA), based on common types
+and "ChoicePlus" (in progress, used in Cambridge, MA), based on common types
 of software used. Contact the creators with suggestions for more formats.}
 }
 \value{
