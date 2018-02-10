@@ -21,7 +21,8 @@ Imports:
     tibble,
     tidyr,
     readr,
-    stringr
+    stringr,
+    readxl
 RoxygenNote: 6.0.1
 Suggests: alluvial,
     networkD3,
