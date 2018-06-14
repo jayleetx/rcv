@@ -10,10 +10,10 @@ library(networkD3)
 library(alluvial)
 ```
 
-# Ranked Choice Voting — R Package
+# rcv
 [![Build Status](https://travis-ci.org/ds-elections/rcv.svg?branch=master)](https://travis-ci.org/ds-elections/rcv)
 
-`rcv` helps you work directly with raw ballot image and cast vote record data to run elections.
+`rcv` helps you work directly with raw ballot image and cast vote record data to tabulate and visualize ranked choice election results.
 
 __Features__
 
