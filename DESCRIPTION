@@ -1,7 +1,7 @@
 Package: rcv
 Type: Package
 Title: Ranked Choice Voting
-Version: 0.2.1
+Version: 0.2.2
 Authors@R: c(
     person("Jay", "Lee", email = "jaylee@reed.edu", role = c("aut", "cre")),
     person("Matthew", "Yancheff", email = "yanchefm@reed.edu", role = c("aut")),
