@@ -3,8 +3,8 @@ Type: Package
 Title: Ranked Choice Voting
 Version: 0.2.1
 Authors@R: c(
-    person("Jay", "Lee", email = "jaylee@reed.edu", role = c("aut")),
-    person("Matthew", "Yancheff", email = "yanchefm@reed.edu", role = c("aut", "cre")),
+    person("Jay", "Lee", email = "jaylee@reed.edu", role = c("aut", "cre")),
+    person("Matthew", "Yancheff", email = "yanchefm@reed.edu", role = c("aut")),
     person("Reed College", role = c("cph")))
 Description: A collection of ranked choice voting data and functions to 
     manipulate, run elections with, and visualize this data and others. 
@@ -15,7 +15,7 @@ BugReports: https://github.com/ds-elections/rcv/issues
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-Depends: R (>= 3.3.3)
+Depends: R (>= 3.3)
 Imports:
     dplyr,
     tibble,
