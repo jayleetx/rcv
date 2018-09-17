@@ -16,7 +16,7 @@ rcv
 
 **Installation**
 
-We're on [CRAN](https://cran.r-project.org/package=rcv) now! You can install our latest release ([0.2.1](NEWS.md)):
+We're on [CRAN](https://cran.r-project.org/package=rcv) now! You can install our latest release ([0.2.2](NEWS.md)):
 
 ``` r
 install.packages("rcv")
