@@ -14,9 +14,8 @@
 #' @return A dataframe that contains vote tallies
 #' @examples
 #' rcv_tally(sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
-#' rcv_tally(cambridge_clean, n_winner = )
 #' @export
-rcv_tally <- function (image, rcvcontest) {
+rcv_tally <- function (image, rules = c('rcv','stv'), n_winners = 1, rcvcontest) {
   contest <- candidate <- pref_voter_id <- vote_rank <- n <- total <- ballot <- NULL
   unique.ballot.candidate. <- . <- NULL
   # filter for the specified contest
