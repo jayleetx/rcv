@@ -14,6 +14,9 @@
 #' @export
 
 import_data <- function(data, header) {
+  # not gonna lie this is a pretty useless function
+  .Deprecated()
+
   if ("data.frame" %in% class(data)) data
 
   else if (class(data) == "character") {
@@ -201,27 +204,22 @@ characterize <- function(ballot, lookup, format) {
 
 #' Master one-step cleaning function
 #'
-#' Wraps `import_data`, `label`, and `characterize` to clean the ballot
+#' Wraps `label` and `characterize` to clean the ballot
 #' image in one step.
 #'
-#' @param ballot The raw ballot image
-#' @param b_header Whether the ballot image has a header line or not
-#' @param lookup The raw lookup image
-#' @param l_header Whether the lookup image has a header line or not
+#' @param ballot The raw ballot image data frame
+#' @param lookup The raw lookup image data frame
 #' @param format A character string detailing the format. Current
 #' supported formats are "WinEDS" and "ChoicePlus" (in progress), based on
 #' common types of software used. Contact creators with suggestions for
 #' more formats.
-#' @return The ballot data, but now "readable" so votes can be understood
-#' @examples clean_ballot(ballot = sf_bos_ballot, b_header = TRUE,
-#' lookup = sf_bos_lookup, l_header = TRUE, format = "WinEDS")
+#' @return The ballot data, but human-readable
+#' @examples clean_ballot(ballot = sf_bos_ballot, lookup = sf_bos_lookup, format = "WinEDS")
 #' @export
 
-clean_ballot <- function(ballot, b_header, lookup, l_header, format) {
-  a <- import_data(data = ballot, header = b_header) %>%
-    label(image = "ballot", format = format)
-  b <- import_data(data = lookup, header = l_header) %>%
-    label(image = "lookup", format = format)
+clean_ballot <- function(ballot, lookup, format) {
+  a <- label(ballot, image = "ballot", format = format)
+  b <- label(lookup, image = "lookup", format = format)
   characterize(ballot = a, lookup = b, format = format)
 }
 

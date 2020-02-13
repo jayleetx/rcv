@@ -8,7 +8,7 @@
 #' and return election results for an RCV contest.
 #'
 #' @section rcv Functions:
-#' import_data(), label(), characterize(), clean_ballot(), clean_mn(),
+#' label(), characterize(), clean_ballot(), clean_mn(),
 #' readable(), elected(), approval(), rcv_tally(), add_exhausted(),
 #' make_alluvialdf(), make_d3list()
 #'

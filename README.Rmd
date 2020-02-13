@@ -21,7 +21,6 @@ __Features__
 * Merge these files to get a "readable" ballot layout
 * Conduct elections, and view a round-by-round table of results
 * Visualize the flow of voters with an interactive Sankey diagram
-* Compatible with `dplyr`/`magrittr` pipe syntax (`%>%`)
 
 __Installation__
 
@@ -58,8 +57,8 @@ head(sf_bos_lookup)
 The streamlined version of this process is done with the `clean_ballot()` function. `b_header` and `l_header` are logical values, based on whether the ballot and lookup file respectively have a header for the first row.
 
 ```{r}
-cleaned <- clean_ballot(ballot = sf_bos_ballot, b_header = T, 
-                        lookup = sf_bos_lookup, l_header = T, 
+cleaned <- clean_ballot(ballot = sf_bos_ballot, 
+                        lookup = sf_bos_lookup, 
                         format = "WinEDS")
 knitr::kable(head(readable(cleaned)))
 ```
@@ -68,11 +67,11 @@ To access intermediate steps, the following process can be used.
 
 ```{r}
 # Import and label ballot image
-a <- import_data(data = sf_bos_ballot, header = T) %>%
+a <- sf_bos_ballot %>%
     label(image = "ballot", format = "WinEDS")
 
 # Import and label master lookup
-b <- import_data(data = sf_bos_lookup, header = T) %>%
+b <- sf_bos_lookup %>%
     label(image = "lookup", format = "WinEDS")
 
 # Merge these two tables
