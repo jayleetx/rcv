@@ -30,5 +30,4 @@ Determines RCV round results in a dataframe
 }
 \examples{
 rcv_tally(sf_bos_clean, rcvcontest = "Board of Supervisors, District 7")
-rcv_tally(cambridge_clean, n_winner = )
 }

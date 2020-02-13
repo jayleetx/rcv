@@ -4,16 +4,12 @@
 \alias{clean_ballot}
 \title{Master one-step cleaning function}
 \usage{
-clean_ballot(ballot, b_header, lookup, l_header, format)
+clean_ballot(ballot, lookup, format)
 }
 \arguments{
-\item{ballot}{The raw ballot image}
+\item{ballot}{The raw ballot image data frame}
 
-\item{b_header}{Whether the ballot image has a header line or not}
-
-\item{lookup}{The raw lookup image}
-
-\item{l_header}{Whether the lookup image has a header line or not}
+\item{lookup}{The raw lookup image data frame}
 
 \item{format}{A character string detailing the format. Current
 supported formats are "WinEDS" and "ChoicePlus" (in progress), based on
@@ -21,13 +17,12 @@ common types of software used. Contact creators with suggestions for
 more formats.}
 }
 \value{
-The ballot data, but now "readable" so votes can be understood
+The ballot data, but human-readable
 }
 \description{
-Wraps `import_data`, `label`, and `characterize` to clean the ballot
+Wraps `label` and `characterize` to clean the ballot
 image in one step.
 }
 \examples{
-clean_ballot(ballot = sf_bos_ballot, b_header = TRUE,
-lookup = sf_bos_lookup, l_header = TRUE, format = "WinEDS")
+clean_ballot(ballot = sf_bos_ballot, lookup = sf_bos_lookup, format = "WinEDS")
 }

@@ -23,7 +23,7 @@ Imports:
     readr,
     stringr,
     readxl
-RoxygenNote: 6.0.1
+RoxygenNote: 7.0.0
 Suggests: alluvial,
     networkD3,
     knitr,
