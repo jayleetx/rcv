@@ -8,9 +8,6 @@
 #' @param data The file, containing ballot or lookup data
 #' @param header Whether the first row of the file is a header or not
 #' @return A data frame
-#' @examples
-#' import_data("https://sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt",
-#'  header = FALSE)
 #' @export
 
 import_data <- function(data, header) {

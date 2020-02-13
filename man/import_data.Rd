@@ -18,7 +18,3 @@ A data frame
 Takes data argument supplied, checks file type, and uses appropriate read-in
 functions to import the data
 }
-\examples{
-import_data("https://sfelections.org/results/20161108/data/20161206/20161206_masterlookup.txt",
- header = FALSE)
-}
