@@ -1,9 +1,11 @@
-library(tidyverse)
-devtools::load_all()
+# library(tidyverse)
+# devtools::load_all()
+#
+# ballot_orig <- cambridge_clean %>%
+#   filter(contest == "001, 1) ") %>%
+#   mutate(candidate = ifelse(str_detect(candidate, "="), NA, candidate))
 
-ballot_orig <- cambridge_clean %>%
-  filter(contest == "001, 1) ") %>%
-  mutate(candidate = ifelse(str_detect(candidate, "="), NA, candidate))
+# ballot <- ballot_orig
 
 # BEFORE RUNNING FUNCTION
 # this should only be run with a single contest, bc it will pull all rows as data
@@ -20,6 +22,48 @@ new_tally <- function(ballot,
   # any number in rank_col that's not the actual ranking
   # having NAs for voter/rank/candidate will get dropped
 
+  # remove dups, standardize columns, make tall
+  ballot <- standard_ballot(ballot = ballot,
+                            voter_col = voter_col,
+                            rank_cols = rank_cols,
+                            cand_col = cand_col)
+
+  candidates <- unique(ballot$candidate)
+
+  # make it wide to group into a "tree" format
+  ballot <- ballot %>%
+    tidyr::pivot_wider(names_from = rank,
+                       values_from = candidate)
+
+  ranks <- colnames(ballot)[-1]
+
+  ballot_tree <- ballot %>%
+    dplyr::group_by_at(dplyr::vars(ranks)) %>%
+    dplyr::tally() %>%
+    dplyr::ungroup() %>%
+    dplyr::mutate(index = dplyr::row_number()) %>%
+    dplyr::select(index, n, dplyr::everything())
+
+  tall_tree <- tree_count %>%
+    tidyr::pivot_longer(cols = ranks,
+                        names_to = "rank",
+                        values_to = "candidate",
+                        values_drop_na = TRUE)
+
+  first_tally <- tall_tree %>%
+    dplyr::arrange(index, rank) %>%
+    dplyr::group_by(index) %>%
+    dplyr::slice(1) %>%
+    dplyr::ungroup() %>%
+    dplyr::group_by(candidate) %>%
+    dplyr::summarize(votes = sum(n)) %>%
+    dplyr::arrange(desc(votes))
+}
+
+standard_ballot <- function(ballot,
+                            voter_col,
+                            rank_cols,
+                            cand_col) {
   # drop columns not needed for counting
   ballot <- ballot %>%
     dplyr::select(voter = voter_col,
@@ -54,35 +98,4 @@ new_tally <- function(ballot,
 
   # at this point, the ballot should be ready to count
   # no duplicates, no missing cases, standardized column
-
-  candidates <- unique(ballot$candidate)
-
-  # make it wide to group into a "tree" format
-  ballot <- ballot %>%
-    tidyr::pivot_wider(names_from = rank,
-                       values_from = candidate)
-
-  ranks <- colnames(ballot)[-1]
-
-  tree_count <- ballot %>%
-    dplyr::group_by_at(dplyr::vars(ranks)) %>%
-    dplyr::tally() %>%
-    dplyr::ungroup() %>%
-    dplyr::mutate(index = dplyr::row_number()) %>%
-    dplyr::select(index, n, dplyr::everything())
-
-  tall_tree <- tree_count %>%
-    tidyr::pivot_longer(cols = ranks,
-                        names_to = "rank",
-                        values_to = "candidate",
-                        values_drop_na = TRUE)
-
-  first_tally <- tall_tree %>%
-    dplyr::arrange(index, rank) %>%
-    dplyr::group_by(index) %>%
-    dplyr::slice(1) %>%
-    dplyr::ungroup() %>%
-    dplyr::group_by(candidate) %>%
-    dplyr::summarize(votes = sum(n)) %>%
-    dplyr::arrange(desc(votes))
 }
