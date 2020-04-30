@@ -70,7 +70,7 @@ rcv_tally <- function(image, rules = c('rcv','stv'), n_winners = 1, rcvcontest) 
       dplyr::filter(vote_rank == min(vote_rank)) %>%
       dplyr::ungroup() %>%
       dplyr::group_by(candidate) %>%
-      dplyr::summarise(total = n()) %>%
+      dplyr::summarise(total = dplyr::n()) %>%
       data.frame() %>%
       dplyr::right_join(candidates,
                  by = c("candidate")) %>%
