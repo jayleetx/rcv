@@ -4,7 +4,7 @@ Title: Ranked Choice Voting
 Version: 0.2.2
 Authors@R: c(
     person("Jay", "Lee", email = "jaylee@reed.edu", role = c("aut", "cre")),
-    person("Matthew", "Yancheff", email = "yanchefm@reed.edu", role = c("ctb")),
+    person("Matthew", "Yancheff", email = "yanchefm@reed.edu", role = c("aut")),
     person("Reed College", role = c("cph")))
 Description: A collection of ranked choice voting data and functions to 
     manipulate, run elections with, and visualize this data and others. 
