@@ -1,22 +1,19 @@
 
 # rcv
 
-[![Build
-Status](https://travis-ci.org/jayleetx/rcv.svg?branch=master)](https://travis-ci.org/jayleetx/rcv)
-
 `rcv` helps you work directly with raw ballot image and cast vote record
 data to tabulate and visualize ranked choice election results.
 
 **Features**
 
-  - Read in ballot image and master lookup files
-  - Merge these files to get a “readable” ballot layout
-  - Conduct elections, and view a round-by-round table of results
-  - Visualize the flow of voters with an interactive Sankey diagram
+-   Read in ballot image and master lookup files
+-   Merge these files to get a “readable” ballot layout
+-   Conduct elections, and view a round-by-round table of results
+-   Visualize the flow of voters with an interactive Sankey diagram
 
 **Installation**
 
-We’re on [CRAN](https://cran.r-project.org/package=rcv) now\! You can
+We’re on [CRAN](https://cran.r-project.org/package=rcv) now! You can
 install our latest release ([0.2.2](NEWS.md)):
 
 ``` r
@@ -29,16 +26,14 @@ Or, you can install the development version of `rcv` here:
 devtools::install_github("jayleetx/rcv")
 ```
 
-Created by:
-
-  - Jay Lee, <jaylee@reed.edu>
-  - Matthew Yancheff, <yanchefm@reed.edu>
-
 This package grew out a class project for Math 241 at Reed College,
-taught by [Dr. Andrew Bray](http://andrewpbray.github.io/).
+taught by [Dr. Andrew Bray](http://andrewpbray.github.io/). [Matthew
+Yancheff](https://github.com/MYancheff) and [Mia
+Leung](https://github.com/mialeung) were instrumental in earlier phases
+of this package and project.
 
 The style of this README is inspired by the
-[googlesheets](%22github.com/jennybc/googlesheets%22) R package.
+[googlesheets](https://github.com/jennybc/googlesheets) R package.
 
 ## Basic Workflow Demo
 
@@ -68,14 +63,14 @@ head(sf_bos_lookup)
 ```
 
     ## # A tibble: 6 x 1
-    ##   X1                                                                       
-    ##   <chr>                                                                    
-    ## 1 Candidate 0000121SAMUEL KWONG                                      00000…
-    ## 2 Candidate 0000131TIM E. DONNELLY                                   00000…
-    ## 3 Candidate 0000133DEAN PRESTON                                      00000…
-    ## 4 Candidate 0000135JOEL ENGARDIO                                     00000…
-    ## 5 Candidate 0000140MELISSA SAN MIGUEL                                00000…
-    ## 6 Candidate 0000144AHSHA SAFAI                                       00000…
+    ##   X1                                                                            
+    ##   <chr>                                                                         
+    ## 1 Candidate 0000121SAMUEL KWONG                                      0000001000~
+    ## 2 Candidate 0000131TIM E. DONNELLY                                   0000001000~
+    ## 3 Candidate 0000133DEAN PRESTON                                      0000001000~
+    ## 4 Candidate 0000135JOEL ENGARDIO                                     0000001000~
+    ## 5 Candidate 0000140MELISSA SAN MIGUEL                                0000001000~
+    ## 6 Candidate 0000144AHSHA SAFAI                                       0000001000~
 
 #### Cleaning Data
 
@@ -92,7 +87,7 @@ knitr::kable(head(readable(cleaned)))
 ```
 
 | contest                          | pref\_voter\_id | 1                | 2                | 3                |
-| :------------------------------- | :-------------- | :--------------- | :--------------- | :--------------- |
+|:---------------------------------|:----------------|:-----------------|:-----------------|:-----------------|
 | Board of Supervisors, District 1 | 000006603       | SANDRA LEE FEWER | NA               | NA               |
 | Board of Supervisors, District 1 | 000006604       | MARJAN PHILHOUR  | DAVID LEE        | SAMUEL KWONG     |
 | Board of Supervisors, District 1 | 000006605       | DAVID LEE        | RICHIE GREENBERG | BRIAN J. LARKIN  |
@@ -118,7 +113,7 @@ knitr::kable(head(readable(c)))
 ```
 
 | contest                          | pref\_voter\_id | 1                | 2                | 3                |
-| :------------------------------- | :-------------- | :--------------- | :--------------- | :--------------- |
+|:---------------------------------|:----------------|:-----------------|:-----------------|:-----------------|
 | Board of Supervisors, District 1 | 000006603       | SANDRA LEE FEWER | NA               | NA               |
 | Board of Supervisors, District 1 | 000006604       | MARJAN PHILHOUR  | DAVID LEE        | SAMUEL KWONG     |
 | Board of Supervisors, District 1 | 000006605       | DAVID LEE        | RICHIE GREENBERG | BRIAN J. LARKIN  |
@@ -141,7 +136,7 @@ knitr::kable(results)
 ```
 
 | candidate           | round1 | round2 | round3 | round4 | round5 | round6 | round7 | round8 | round9 | round10 | round11 | round12 | round13 | round14 | round15 | round16 | round17 | round18 | round19 | round20 | round21 | round22 | round23 | round24 | round25 | round26 | round27 |
-| :------------------ | -----: | -----: | -----: | -----: | -----: | -----: | -----: | -----: | -----: | ------: | ------: | ------: | ------: | ------: | ------: | ------: | ------: | ------: | ------: | ------: | ------: | ------: | ------: | ------: | ------: | ------: | ------: |
+|:--------------------|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|-------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|--------:|
 | LONDON BREED        |  21318 |  21318 |  21318 |  21318 |  21318 |  21318 |  21318 |  21318 |  21318 |   21318 |   21318 |   21318 |   21318 |   21318 |   21318 |   21318 |   21318 |   21318 |   21318 |   21318 |   21318 |   21318 |   21318 |   30301 |   30301 |   30301 |   30301 |
 | HILLARY RONEN       |  18335 |  18335 |  18460 |  18460 |  18460 |  18460 |  18460 |  18460 |  18460 |   18460 |   18460 |   18460 |   20166 |   20166 |   20166 |   20166 |   20166 |   20166 |   20166 |   25696 |   25696 |   25696 |   25696 |   25696 |   25696 |   25696 |   25696 |
 | AARON PESKIN        |  19093 |  19093 |  19093 |  19093 |  19093 |  19093 |  19093 |  19093 |  19093 |   19093 |   19093 |   19093 |   19093 |   19093 |   19093 |   19093 |   22254 |   22254 |   22254 |   22254 |   22254 |   22254 |   22254 |   22254 |   22254 |   22254 |      NA |
@@ -203,6 +198,1483 @@ called an alluvial diagram):
 ``` r
 alluvial_7 <- rcv::make_alluvialdf(image = sf_bos_clean,
                                    rcvcontest = "Board of Supervisors, District 7")
+```
+
+    ## Warning: `count_()` was deprecated in dplyr 0.7.0.
+    ## Please use `count()` instead.
+    ## See vignette('programming') for more help
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning in min(rank): no non-missing arguments to min; returning Inf
+
+    ## Warning: `group_by_()` was deprecated in dplyr 0.7.0.
+    ## Please use `group_by()` instead.
+    ## See vignette('programming') for more help
+
+``` r
 alluvial::alluvial(
   alluvial_7[,1:4], freq = alluvial_7$frequency,
   col = ifelse(alluvial_7$round4 == "NORMAN YEE", "lightgreen", "gray"),
